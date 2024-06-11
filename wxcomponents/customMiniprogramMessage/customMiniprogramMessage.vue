@@ -1,0 +1,132 @@
+<template>
+<uni-shadow-root class="customMiniprogramMessage-customMiniprogramMessage"><view class="container">
+    <image class="answerimage" src="https://res.wx.qq.com/mmspraiweb_node/dist/static/openaiplugin/img/answerImage.png"></image>
+    <view class="content" @click="reserve">
+      <view class="top">
+        <view class="minipro_title">{{msg.data.title}}</view>
+      </view>
+      <view class="minipro_imgview">
+        <image :src="msg.data.thumb_url" class="minipro_image" mode="aspectFill"></image>
+      </view>
+      <view class="bottom">
+        <image src="https://res.wx.qq.com/mmspraiweb_node/dist/static/huoche/image/miniprogram.png" class="mini_icon"></image>
+        小程序
+      </view>
+    </view>
+</view></uni-shadow-root>
+</template>
+
+<script>
+
+global['__wxVueOptions'] = {components:{}}
+
+global['__wxRoute'] = 'customMiniprogramMessage/customMiniprogramMessage'
+Component({
+  properties: {
+    msg: Object
+  },
+
+  data: {},
+  lifetimes: {
+    ready: function() {}
+  },
+  methods: {
+    reserve:function() {
+      // 唤起其他小程序
+      wx.navigateToMiniProgram({
+        appId: this.properties.msg.data.appid,
+        path: this.properties.msg.data.pagepath,
+        extraData: {
+        },
+        envVersion: '',
+        success(res) {
+          // 打开成功
+        }
+      })
+      // 当前小程序页面跳转
+      // wx.navigateTo({
+      //   url: this.properties.msg.data.pagepath
+      // })
+    }
+  }
+});
+export default global['__wxComponents']['customMiniprogramMessage/customMiniprogramMessage']
+</script>
+<style platform="mp-weixin">
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.answerimage {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  margin-top: 10px;
+  
+}
+
+.content {
+  background: #ffffff;
+  margin: 10px 0;
+  width: 231px;
+  height: 254.5px;
+}
+
+.empty {
+  width: 1px;
+  height: 10px;
+  margin-right: 10px;
+  background: #07c05f;
+}
+.minipro_title {
+  font-size:12px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(48,49,51,1);
+}
+
+.minipro_imgview{
+  width: 231px;
+  height: 179px;
+  padding: 10.5px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.minipro_image {
+  object-fit: cover;
+  width: 100%;
+}
+.top {
+  padding-left: 10px;
+  box-sizing: border-box;
+  height: 37.5px;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  background:rgba(233,243,254,1);
+}
+.bottom {
+  padding-left: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 27px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size:11px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(144,147,153,1);
+}
+
+.mini_icon {
+  margin-right: 5px;
+  width: 12px;
+  height: 12px;
+  color: #606266;
+}
+</style>

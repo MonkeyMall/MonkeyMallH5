@@ -1,0 +1,566 @@
+{
+  "pages": [
+		{
+			"path": "pages/index",
+			"style": {
+				"navigationBarTitleText": "考研一起卷",
+				"navigationStyle": "custom",
+        "enablePullDownRefresh": true
+			}
+		},
+    {
+			"path": "pages/pay/index",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
+		},
+    {
+			"path": "pages/teacherImg",
+			"style": {
+				"navigationBarTitleText": "联系老师"
+			}
+		},
+		{
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+    {
+			"path": "pages/zdyi",
+			"style": {
+				"navigationBarTitleText": "协议"
+			}
+		},
+		{
+			"path": "pages/work/index",
+			"style": {
+				"navigationBarTitleText": "考研一起卷"
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "考研一起卷",
+				"navigationStyle": "custom" //设置不显示原生导航栏
+			}
+		},
+		{
+			"path": "pages/common/webview/index",
+			"style": {
+				"navigationBarTitleText": "浏览网页"
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pageSec",
+			"pages": [
+				{
+					"path": "timerPage/countdown/index",
+					"style": {
+						"navigationBarTitleText": "倒计时"
+					}
+				},
+				{
+					"path": "timerPage/countdown/index1",
+					"style": {
+						"navigationBarTitleText": "倒计时1"
+					}
+				},
+				{
+					"path": "timerPage/positiveTiming/index",
+					"style": {
+						"navigationBarTitleText": "正计时"
+					}
+				},
+				{
+					"path": "work/appraisal/answerSheet",
+					"style": {
+						"navigationBarTitleText": "答题卡"
+					}
+				},
+				{
+					"path": "work/english/planSet",
+					"style": {
+						"navigationBarTitleText": "计划设置"
+					}
+				},
+				{
+					"path": "work/english/wordTest",
+					"style": {
+						"navigationBarTitleText": "单词测试"
+					}
+				},
+				{
+					"path": "work/english/wordBook",
+					"style": {
+						"navigationBarTitleText": "单词本",
+            "enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "work/english/wordDetail",
+					"style": {
+						"navigationBarTitleText": "单词详情"
+					}
+				},
+				{
+					"path": "work/english/studyReport",
+					"style": {
+						"navigationBarTitleText": "学习报告"
+					}
+				},
+				{
+					"path": "work/english/collectPage",
+					"style": {
+						"navigationBarTitleText": "我的收藏",
+            "enablePullDownRefresh": true
+					}
+				},
+				{
+					"path": "work/english/problemCorrection/problemCorrection",
+					"style": {
+						"navigationBarTitleText": "题目纠错"
+					}
+				},
+				{
+					"path": "work/english/brushQuestionResults",
+					"style": {
+						"navigationBarTitleText": "刷题结果"
+					}
+				},
+				{
+					"path": "work/mathematics/brushQuestions/index",
+					"style": {
+						"navigationBarTitleText": "真题刷题"
+					}
+				},
+				{
+					"path": "work/mathematics/questionBank/index",
+					"style": {
+						"navigationBarTitleText": "名师题库"
+					}
+				},
+				{
+					"path": "work/mathematics/dailyQuizzes/index",
+					"style": {
+						"navigationBarTitleText": "每日刷题"
+					}
+				},
+				{
+					"path": "work/mathematics/mathExaminationPoints/index",
+					"style": {
+						"navigationBarTitleText": "考点题库",
+            "enablePullDownRefresh": true
+					}
+				},
+        {
+					"path": "work/mathematics/mathExaminationPoints/collectPage",
+					"style": {
+						"navigationBarTitleText": "精选题库"
+					}
+				},
+				{
+					"path": "work/mathematics/mathExaminationPoints/directory",
+					"style": {
+						"navigationBarTitleText": "章节目录"
+					}
+				},
+				{
+					"path": "work/exercise/section/list",
+					"style": {
+						"navigationBarTitleText": "精选刷题"
+					}
+				},
+				{
+					"path": "work/exercise/section/index",
+					"style": {
+						"navigationBarTitleText": "章节目录"
+					}
+				},
+				{
+					"path": "work/exercise/section/doing",
+					"style": {
+						"navigationBarTitleText": "做题"
+					}
+				},
+        {
+					"path": "work/exercise/section/questionInfo",
+					"style": {
+						"navigationBarTitleText": "试题详情"
+					}
+				},
+		    {
+          "path": "work/appraisal/evlationResult",
+          "style": {
+            "navigationBarTitleText": "答题结果"
+          }
+        },
+        {
+          "path": "work/appraisal/analysis",
+          "style": {
+            "navigationBarTitleText": "全部解析"
+          }
+        },
+				{
+					"path": "checkcolleges/index",
+					"style": {
+						"navigationBarTitleText": "查院校"
+					}
+				},
+				{
+					"path": "checkthemajor/index",
+					"style": {
+						"navigationBarTitleText": "查专业"
+					}
+				},
+				{
+					"path": "schoolcomparison/index",
+					"style": {
+						"navigationBarTitleText": "院校对比",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "countrylineinquiry/index",
+					"style": {
+						"navigationBarTitleText": "国家线查询",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "AIchooseschool/index",
+					"style": {
+						"navigationBarTitleText": "AI择校"
+					}
+				},
+				{
+					"path": "work/appraisal/doing",
+					"style": {
+						"navigationBarTitleText": "测评"
+					}
+				},
+				{
+					"path": "mine/info/index",
+					"style": {
+						"navigationBarTitleText": "个人信息"
+					}
+				},
+				{
+					"path": "mine/info/finshUserInfo",
+					"style": {
+						"navigationBarTitleText": "完善资料"
+					}
+				},
+				// {
+				// 	"path": "mine/info/edit",
+				// 	"style": {
+				// 		"navigationBarTitleText": "真实姓名"
+				// 	}
+				// },
+				{
+					"path": "mine/notification/index",
+					"style": {
+						"navigationBarTitleText": "消息通知"
+					}
+				},
+				{
+					"path": "mine/notification/details",
+					"style": {
+						"navigationBarTitleText": "消息详情"
+						// "navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "mine/orderlist/index",
+					"style": {
+						"navigationBarTitleText": "我的订单"
+					}
+				},
+				{
+					"path": "mine/orderlist/refund",
+					"style": {
+						"navigationBarTitleText": "申请退款"
+					}
+				},
+				{
+					"path": "mine/orderlist/orderInfo",
+					"style": {
+						"navigationBarTitleText": "订单详情"
+					}
+				},
+				{
+					"path": "mine/orderlist/voucher",
+					"style": {
+						"navigationBarTitleText": "支付凭证"
+					}
+				}
+			]
+		},
+		{
+			"root": "pageThe",
+			"pages": [
+				{
+					"path": "checkcolleges/Institutiondetails",
+					"style": {
+						"navigationBarTitleText": "院校详情",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "checkthemajor/professional",
+					"style": {
+						"navigationBarTitleText": "查专业",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "schoolcomparison/contrastselection",
+					"style": {
+						"navigationBarTitleText": "院校对比",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+        {
+					"path": "schoolcomparison/chooseSpecial",
+					"style": {
+						"navigationBarTitleText": "选择专业",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "schoolcomparison/schoollist",
+					"style": {
+						"navigationBarTitleText": "选择院校"
+					}
+				},
+				{
+					"path": "schoolcomparison/institutions",
+					"style": {
+						"navigationBarTitleText": "院校对比",
+						"navigationStyle": "custom" //设置不显示原生导航栏
+					}
+				},
+				{
+					"path": "checkthemajor/aprofessionaldetails",
+					"style": {
+						"navigationBarTitleText": "专业详情"
+					}
+				},
+				// {
+				// 	"path": "mine/avatar/index",
+				// 	"style": {
+				// 		"navigationBarTitleText": "修改头像"
+				// 	}
+				// },
+				// {
+				// 	"path": "mine/setting/index",
+				// 	"style": {
+				// 		"navigationBarTitleText": "应用设置"
+				// 	}
+				// },
+				{
+					"path": "home/info",
+					"style": {
+						"navigationBarTitleText": "日报详情"
+					}
+				},
+				{
+					"path": "tableDemo/index",
+					"style": {
+						"navigationBarTitleText": "表格demo"
+					}
+				}
+			]
+		},
+    {
+      "root": "pageFour",
+      "plugins": {
+        "chatbot": {
+          "version": "1.4.1",
+          "provider": "wx8c631f7e9f2465e1"
+        }
+      },
+      "pages": [
+        {
+          "path": "redBoxRain/index",
+          "style": {
+            "navigationBarTitleText": "红包雨",
+            "navigationStyle": "custom",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "chat/chatBot",
+          "style": {
+            "navigationBarTitleText": "智能对话",
+            "mp-weixin": {
+              "usingComponents": {
+                "chat": "plugin://chatbot/chat"
+                // "customTextMessage": "/wxcomponents/customTextMessage/customTextMessage",
+                // "customWeatherMessage": "/wxcomponents/customWeatherMessage/customWeatherMessage",
+                // "customImageMessage": "/wxcomponents/customImageMessage/customImageMessage",
+                // "customGuideCard": "/wxcomponents/customGuideCard/customGuideCard",
+                // "customQueryMessage": "/wxcomponents/customQueryMessage/customQueryMessage",
+                // "customoperateCard": "/wxcomponents/customoperateCard/customoperateCard",
+                // "customMusicMessage": "/wxcomponents/customMusicMessage/customMusicMessage",
+                // "customNewsMessage": "/wxcomponents/customNewsMessage/customNewsMessage",
+                // "customUnsupportedMessage": "/wxcomponents/customUnsupportedMessage/customUnsupportedMessage",
+                // "customMiniprogramMessage": "/wxcomponents/customMiniprogramMessage/customMiniprogramMessage",
+                // "customh5Message": "/wxcomponents/customh5Message/customh5Message"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "root": "pageFive",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "测试公式"
+          }
+        },
+        {
+          "path": "work/examination/index",
+          "style": {
+            "navigationBarTitleText": "考试模式"
+          }
+        },
+        {
+          "path": "work/examination/testSwitch",
+          "style": {
+            "navigationBarTitleText": "考试详情",
+            "componentPlaceholder" : {
+              "foo": "view"
+            }
+          }
+        },
+        {
+          "path": "work/examination/timeResult",
+          "style": {
+            "navigationBarTitleText": "考试详情",
+            "navigationStyle": "custom" //设置不显示原生导航栏
+          }
+        },
+        {
+          "path": "work/examination/clock",
+          "style": {
+            "navigationBarTitleText": "考试模式"
+          }
+        },
+        {
+          "path": "work/exercise/index",
+          "style": {
+            "navigationBarTitleText": "政治刷题",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "work/english/index",
+          "style": {
+            "navigationBarTitleText": "英语刷题",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "work/rankingList/index",
+          "style": {
+            "navigationBarTitleText": "排行榜",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "work/mathematics/index",
+          "style": {
+            "navigationBarTitleText": "数学刷题",
+            "enablePullDownRefresh": true
+          }
+        },
+        {
+          "path": "work/appraisal/index",
+          "style": {
+            "navigationBarTitleText": "测评"
+          }
+        },
+        {
+          "path": "tomato/index",
+          "style": {
+            "navigationBarTitleText": "番茄模式"
+          }
+        },
+        {
+          "path": "tomato/edit",
+          "style": {
+            "navigationBarTitleText": "番茄模式/编辑"
+          }
+        },
+        {
+          "path": "tomato/timer",
+          "style": {
+            "navigationBarTitleText": "番茄模式/详情"
+          }
+        },
+        {
+					"path": "mine/feedback/index",
+					"style": {
+						"navigationBarTitleText": "意见反馈"
+					}
+				}
+      ]
+    }
+	],
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#fb5564",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index",
+				"iconPath": "static/images/tabbar/home.png",
+				"selectedIconPath": "static/images/tabbar/home_.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/work/index",
+				"iconPath": "static/images/tabbar/work.png",
+				"selectedIconPath": "static/images/tabbar/work_.png",
+				"text": "刷题"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"iconPath": "static/images/tabbar/mine.png",
+				"selectedIconPath": "static/images/tabbar/mine_.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "RuoYi",
+    // "enablePullDownRefresh": true,
+		"navigationBarBackgroundColor": "#FFFFFF"
+	},
+  "uniIdRouter": {},
+	"condition": {
+		"current": 1,
+		"list": [
+			{
+				// 小宋
+				"name": "song",
+				"path": "pages/work/appraisal/list",
+				"query": ""
+			},
+			{
+				// 小宋
+				"name": "支付",
+				"path": "pages/pay/index",
+				"query": ""
+			}
+		]
+	}
+}

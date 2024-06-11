@@ -1,0 +1,11 @@
+{
+    "id": "lj-chart",
+    "name": "xiaosong",
+    "displayName": "xiaosong",
+    "version": "1.0.0",
+    "dependencies": {
+        "@rojer/katex-mini": "^1.1.3",
+        "@wxobs/miniprogram-sdk": "0.4.11",
+        "uview-ui": "^2.0.36"
+    }
+}
