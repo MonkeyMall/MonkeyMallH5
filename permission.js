@@ -6,7 +6,7 @@ const loginPage = "/pages/login"
 // 页面白名单
 const whiteList = [
   '/pages/login', // 登录页
-  '/pages/pay/index', // 支付页
+  '/pages/ridicule/info', // 支付页
   '/pages/index', // 首页
   '/pages/work/index', // 刷题
   '/pages/common/webview/index', // webview页面

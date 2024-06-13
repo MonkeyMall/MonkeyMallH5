@@ -30,7 +30,7 @@ module.exports = {
   // 应用信息
   appInfo: {
     // 应用名称
-    name: "学生端小程序",
+    name: "猿社区",
     // 应用版本
     version: "1.1.0",
     // 应用logo
