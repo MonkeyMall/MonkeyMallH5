@@ -3,9 +3,7 @@
 		{
 			"path": "pages/index",
 			"style": {
-				"navigationBarTitleText": "考研一起卷",
-				"navigationStyle": "custom",
-        "enablePullDownRefresh": true
+				"navigationBarTitleText": "首页"
 			}
 		},
 		{
@@ -23,8 +21,13 @@
 		{
 			"path": "pages/mine/index",
 			"style": {
-				"navigationBarTitleText": "考研一起卷",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "我的"
+			}
+		},
+    {
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "登录"
 			}
 		},
 		{

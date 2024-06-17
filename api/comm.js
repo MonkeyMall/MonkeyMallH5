@@ -1,5 +1,4 @@
 import {request} from '@/utils/request'
-console.log(222, request)
 import { getUserId, setPhoneUuid, getPhoneUuid, getTeacherId } from '@/utils/auth'
 if (!getPhoneUuid()) {
   let yykjId = 'YYKJ' + new Date().getTime() + ((Math.random() * 100) | 0)

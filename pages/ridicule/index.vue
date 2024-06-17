@@ -1,26 +1,17 @@
 <template>
     <view class="ridicule">
-      <view class="ridicule-item">
+      <view class="ridicule-item" @click="toPage(item)" v-for="(item, index) in list" :key="index">
         <!-- <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt=""> -->
         <view class="ridicule-item-cons">
-          <view class="ridicule-item-cons-title">标题</view>
-          <view class="ridicule-item-cons-content">内容内容内容内容内容内容内容内容内容内容内容</view>
+          <view class="ridicule-item-cons-title">{{ item.title }}</view>
+          <view class="ridicule-item-cons-content">{{ item.content }}</view>
         </view>
         <view class="ridicule-item-tags">
-          <view class="ridicule-item-tags-item xljt">心灵鸡汤</view>
-          <view class="ridicule-item-tags-item gztk">工作调侃</view>
-        </view>
-      </view>
-      <view class="ridicule-item" @click="toPage()">
-        <!-- <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt=""> -->
-        <view class="ridicule-item-cons">
-          <view class="ridicule-item-cons-title">标题</view>
-          <view class="ridicule-item-cons-content">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view>
-        </view>
-        <view class="ridicule-item-tags">
+          <view class="ridicule-item-tags-item xljt">{{ item.category }}</view>
+<!--           
           <view class="ridicule-item-tags-item xljt">心灵鸡汤</view>
           <view class="ridicule-item-tags-item shgw">生活感悟</view>
-          <view class="ridicule-item-tags-item gztk">工作调侃</view>
+          <view class="ridicule-item-tags-item gztk">工作调侃</view> -->
         </view>
       </view>
       <uni-load-more :status="loadingStatus"></uni-load-more>
@@ -28,7 +19,9 @@
 </template>
 
 <script>
-// import workIndexTemplate2 from '@/pages/work/components/workIndexTemplate2.vue'
+import {
+  getRidiculeList
+} from '@/api/guoguo.js'
 
 export default {
   data() {
@@ -38,10 +31,11 @@ export default {
       total: 0,
       //定义加载方式 more---contentdown  loading---contentrefresh nomore---contentnomore
       loadingStatus: 'more',
+      list: []
     }
   },
   onShow() {
-    
+    this.getList()
   },
   components: {
     
@@ -50,10 +44,18 @@ export default {
     
   },
   methods: {
-    toPage() {
+    toPage(item) {
+      console.log(11, item)
       uni.navigateTo({
-        url: '/pages/ridicule/info'
+        url: `/pages/ridicule/info?id=${item._id}`
       })
+    },
+    async getList() {
+      const data = await getRidiculeList({
+        page: 1
+      })
+      console.log('datalist', data)
+      this.list = data.data
     }
   }
 }

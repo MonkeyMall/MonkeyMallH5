@@ -1,24 +1,17 @@
 <template>
   <view class="ridicule">
-    <view class="ridicule-info">
-        <view class="ridicule-info-title">标题</view>
-        <view class="ridicule-info-cons">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view>
+    <view class="ridicule-info" v-if="list.length">
+        <view class="ridicule-info-title">{{ list[0].contentId.title }}</view>
+        <view class="ridicule-info-cons">{{ list[0].contentId.content }}</view>
     </view>
-    <view class="ridicule-pl">
-      <view class="ridicule-pl-item">
+    <view class="ridicule-pl" v-if="list.length">
+      <view class="ridicule-pl-item" v-for="(item,index) in list" :key="index">
         <view class="header">
           <image class="ridicule-pl-header" src="" mode="aspectFill"></image>
-          <text>帅龙龙</text>
+          <text v-if="item.creatUserId">{{ item.userId.username }} 回复 {{ item.creatUserId.username }}</text>
+          <text v-else>{{ item.userId.username }}</text>
         </view>
-        <view class="ridicule-pl-cons">品龙的内容</view>
-        <view class="date">2024-02-02</view>
-      </view>
-      <view class="ridicule-pl-item">
-        <view class="header">
-          <image class="ridicule-pl-header" src="" mode="aspectFill"></image>
-          <text>帅龙龙</text>
-        </view>
-        <view class="ridicule-pl-cons">品龙的内容</view>
+        <view class="ridicule-pl-cons">{{ item.commentContents }}</view>
         <view class="date">2024-02-02</view>
       </view>
     </view>
@@ -32,8 +25,9 @@
 </template>
 
 <script>
-// import workIndexTemplate2 from '@/pages/work/components/workIndexTemplate2.vue'
-
+import {
+  getCommentList
+} from '@/api/guoguo.js'
 export default {
   data() {
     return {
@@ -42,11 +36,19 @@ export default {
       total: 0,
       //定义加载方式 more---contentdown  loading---contentrefresh nomore---contentnomore
       loadingStatus: 'more',
-      show: false
+      show: false,
+      id: '',
+      title: '',
+      content: '',
+      list: []
     }
   },
   onShow() {
-    
+    this.getList()
+  },
+  onLoad(options) {
+    console.log(options)
+    this.id = options.id
   },
   components: {
     
@@ -57,7 +59,16 @@ export default {
   methods: {
     openDialog() {
       this.$refs.popup.open('bottom')
+    },
+    async getList() {
+      const data = await getCommentList({
+        page: 1,
+        contentId: this.id
+      })
+      console.log('datalist', data)
+      this.list = data.data
     }
+    
   }
 }
 </script>

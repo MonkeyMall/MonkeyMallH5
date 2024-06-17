@@ -11,27 +11,21 @@ import errorCode from '@/utils/errorCode'
 import { toast, showConfirm, tansParams } from '@/utils/common'
 import md5 from '@/utils/md5'
 import { getToken, getPhone, getAppInfo } from '@/utils/auth'
-//文件引用
-import base64 from './base64.js'
 let timeout = 10000
 const baseUrl = config.baseUrl
 let hasErrorMsg = false
 const request = config => {
   console.log('config', config)
   // 是否需要设置 token
-  const isToken = (config.headers || {}).isToken === false
+  // const isToken = (config.headers || {}).isToken === false
   config.header = config.header || {}
-  let time = Date.now();
-  // console.log('原始的值', time)
-  let sign = base64(time)
-  // console.log('base64的值', time)
-  sign = md5(sign  + "yhpn")
-  // console.log('md5的值', time)
-  // 设置请求头
-  config.header['time'] = time
-  config.header['sign'] = sign
-  if (getToken() && !isToken) {
-    config.header['Authorization'] = 'Bearer ' + getToken()
+  // if (getToken() && !isToken) {
+  //   config.header['Authorization'] = 'Bearer ' + getToken()
+  // }
+  let cookie = 'account=songyanbin; userInfo={"_id":"666840a5e1ac8c0e360445d5","username":"songyanbin"}'
+  config.header = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Cookie": cookie
   }
   if (!hasErrorMsg && config.header.hasLoading) {
 		uni.showLoading({
