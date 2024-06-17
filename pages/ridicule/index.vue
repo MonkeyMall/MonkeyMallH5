@@ -7,11 +7,9 @@
           <view class="ridicule-item-cons-content">{{ item.content }}</view>
         </view>
         <view class="ridicule-item-tags">
-          <view class="ridicule-item-tags-item xljt">{{ item.category }}</view>
-<!--           
-          <view class="ridicule-item-tags-item xljt">心灵鸡汤</view>
-          <view class="ridicule-item-tags-item shgw">生活感悟</view>
-          <view class="ridicule-item-tags-item gztk">工作调侃</view> -->
+          <view class="ridicule-item-tags-item xljt" v-if="item.category === '心灵鸡汤'">心灵鸡汤</view>
+          <view class="ridicule-item-tags-item shgw" v-else-if="item.category === '生活感悟'">生活感悟</view>
+          <view class="ridicule-item-tags-item gztk" v-else>工作调侃</view>
         </view>
       </view>
       <uni-load-more :status="loadingStatus"></uni-load-more>
