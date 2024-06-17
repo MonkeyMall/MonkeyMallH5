@@ -12,13 +12,21 @@
           <text v-else>{{ item.userId.username }}</text>
         </view>
         <view class="ridicule-pl-cons">{{ item.commentContents }}</view>
-        <view class="date">2024-02-02</view>
+        <view class="date">
+          <view>回复</view>
+          <view>{{ item.startTime }}</view>
+        </view>
       </view>
     </view>
     <view class="plBtn" @click="openDialog">评 论</view>
     <uv-popup ref="popup">
-      <view>
-        <text>出淤泥而不染，濯清涟而不妖</text>
+      <view class="login-form">
+        <view class="login-form-item">
+          <view class="login-form-item-label">手机号</view>
+          <view class="login-form-item-input">
+            <input type="number" v-model="loginForm.username" class="input" placeholder="请输入您的手机号" maxlength="30" />
+          </view>
+        </view>
       </view>
     </uv-popup>
   </view>
@@ -119,9 +127,10 @@ export default {
       }
       .date {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         font-size: 24rpx;
         color: $uni-text-color-grey;
+        margin-top: 30rpx;
       }
     }
   }
@@ -139,4 +148,57 @@ export default {
     z-index: 100;
   }
 }
+.login-form {
+    border-radius: 40rpx 40rpx 0rpx 0rpx;
+    margin-top: -40rpx;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    padding: 0 54rpx;
+
+    &-item {
+      padding-top: 50rpx;
+      padding-bottom: 24rpx;
+      border-bottom: 2rpx solid #f3f6fc;
+      position: relative;
+
+      &-label {
+        font-size: 32rpx;
+        font-weight: 500;
+        color: #333333;
+        margin-bottom: 40rpx;
+      }
+
+      &-input {
+        padding-right: 60rpx;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+
+        &.noPadd {
+          padding-right: 0rpx;
+        }
+
+        .input {
+          width: 100%;
+          height: 100%;
+        }
+
+        .login-code-img {
+          width: 160rpx;
+          height: 60rpx;
+        }
+      }
+
+      .iconEye {
+        width: 44rpx;
+        height: 44rpx;
+        position: absolute;
+        right: 0;
+        bottom: 22rpx;
+      }
+    }
+  }
 </style>
