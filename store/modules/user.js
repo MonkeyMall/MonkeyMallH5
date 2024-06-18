@@ -58,7 +58,8 @@ const user = {
       return new Promise((resolve, reject) => {
         login({
           username,
-          password
+          password,
+          
         }).then(res => {
           uni.setStorageSync('userInfo', JSON.stringify(res.data))
           resolve()

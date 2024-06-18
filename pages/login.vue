@@ -82,17 +82,6 @@ export default {
     handleUserRegister() {
       this.$tab.redirectTo(`/pages/register`)
     },
-    // 获取图形验证码
-    getCode() {
-      getCodeImg().then(res => {
-        console.log('验证码信息：', res)
-        this.captchaEnabled = res.captchaEnabled === undefined ? true : res.captchaEnabled
-        if (this.captchaEnabled) {
-          this.codeUrl = 'data:image/gif;base64,' + res.img
-          this.loginForm.uuid = res.uuid
-        }
-      })
-    },
     // 登录方法
     async handleLogin() {
       if (this.loginForm.username === "") {

@@ -24,7 +24,7 @@
 module.exports = {
   // baseUrl,
   // baseUrl: 'https://vue.ruoyi.vip/prod-api',
-  baseUrl: 'http://127.0.0.1:8080/api',//本地环境
+  baseUrl: 'http://localhost:8080/api',//本地环境
   // baseUrl: 'https://kaoyan.yykjedu.com/api',//测试环境
   // baseUrl: 'https://ky.yykjedu.com/prod-api',//线上环境
   // 应用信息

@@ -42,6 +42,7 @@ const request = config => {
     url = url.slice(0, -1)
     config.url = url
   }
+  console.log(11,config)
   return new Promise((resolve, reject) => {
     uni.request({
         method: config.method || 'get',
@@ -51,6 +52,7 @@ const request = config => {
         header: config.header,
         dataType: 'json'
       }).then(response => {
+        console.log(22,response)
         if (config.header.hasLoading) {
           setTimeout(() => {
             uni.hideLoading()
@@ -108,6 +110,7 @@ const request = config => {
       .catch(error => {
         // uni.hideLoading()
         let { message } = error
+        console.log(33,error)
         if (message === 'Network Error') {
           message = '当前网速较慢，请稍后重试'
         } else if (message.includes('timeout')) {

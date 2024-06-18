@@ -4,7 +4,7 @@ export function login(data) {
 	return request({
 		url: '/user/WeChat/register',
 		method: 'post',
-		data
+		data: data
 	})
 }
 
