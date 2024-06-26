@@ -62,8 +62,8 @@ export default {
       register: false,
       globalConfig: getApp().globalData.config,
       loginForm: {
-        username: "", // 18535051000 13699153452
-        password: "", //"123456",
+        username: "songyanbin", // 18535051000 13699153452
+        password: "admin123", //"123456",
         header: uni.getStorageSync('header'),
         openid: uni.getStorageSync('openid')
       }

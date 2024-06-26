@@ -1,6 +1,9 @@
 <template>
-  <view class="mineIndexBox" v-if="userInfo">
-    用户名：{{ userInfo.username }}
+  <view class="mineIndexBox">
+    <view v-if="userInfo">
+      用户名：{{ userInfo.username }}
+    </view>
+    <view v-else class="loginBtn" @click="goLogin">登录</view>
   </view>
 </template>
 
@@ -14,7 +17,7 @@ import { getWetchatName } from '@/utils/auth'
 export default {
   data() {
     return {
-      userInfo: JSON.parse(uni.getStorageSync('userInfo')) || ''
+      userInfo: JSON.parse(uni.getStorageSync('userInfoJson')) || ''
     }
   },
   components: {
@@ -37,11 +40,24 @@ export default {
     };
   },
   methods: {
-    
+    goLogin() {
+      uni.navigateTo({
+        url: '/pages/login/index'
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.loginBtn {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background: #fff;
+  color: #000;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+}
 </style>

@@ -61,7 +61,7 @@ const user = {
           password,
           
         }).then(res => {
-          uni.setStorageSync('userInfo', JSON.stringify(res.data))
+          uni.setStorageSync('userInfoJson', JSON.stringify(res.data))
           resolve()
         }).catch(error => {
           reject(error)

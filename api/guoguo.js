@@ -19,6 +19,15 @@ export function getCommentList(query) {
   })
 }
 
+// 评论
+export function addCommentRidicule(params) {
+	return request({
+		url: "/comment/add",
+		method: "post",
+		data: params
+	})
+}
+
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {
 // 	return request({

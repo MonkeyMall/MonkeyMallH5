@@ -13,20 +13,27 @@
         </view>
         <view class="ridicule-pl-cons">{{ item.commentContents }}</view>
         <view class="date">
-          <view>回复</view>
+          <view @click="openDialog(1, item)">回复</view>
           <view>{{ item.startTime }}</view>
         </view>
       </view>
     </view>
-    <view class="plBtn" @click="openDialog">评 论</view>
+    <view class="plBtn" @click="openDialog(2)">评 论</view>
     <uv-popup ref="popup">
       <view class="login-form">
+        <view v-if="hfMessage">{{ hfMessage }}</view>
+        <view v-if="hfPerson">@{{ hfPerson }}</view>
         <view class="login-form-item">
-          <view class="login-form-item-label">手机号</view>
-          <view class="login-form-item-input">
-            <input type="number" v-model="loginForm.username" class="input" placeholder="请输入您的手机号" maxlength="30" />
-          </view>
+          <uv-textarea
+            v-model="formPl.commentContents"
+            height="255rpx"
+            border="none"
+            placeholder="请输入您的评论"
+            count
+            maxlength="500"
+          ></uv-textarea>
         </view>
+        <view class="pl-btn" @click="submitPlFn()">评论</view>
       </view>
     </uv-popup>
   </view>
@@ -34,7 +41,8 @@
 
 <script>
 import {
-  getCommentList
+  getCommentList,
+  addCommentRidicule
 } from '@/api/guoguo.js'
 export default {
   data() {
@@ -48,7 +56,14 @@ export default {
       id: '',
       title: '',
       content: '',
-      list: []
+      list: [],
+      hfPerson: '',
+      hfMessage: '',
+      formPl: {
+        contentId: '',//评论侃言的ID
+        commentContents: '',//评论内容
+        creatUserId: ''// 被评论人
+      }
     }
   },
   onShow() {
@@ -57,6 +72,7 @@ export default {
   onLoad(options) {
     console.log(options)
     this.id = options.id
+    this.formPl.contentId = options.id
   },
   components: {
     
@@ -65,7 +81,15 @@ export default {
     
   },
   methods: {
-    openDialog() {
+    openDialog(type, item) {
+      if (type === 1) {
+        this.formPl.creatUserId = item.userId._id
+        this.hfPerson = item.userId.username
+        this.hfMessage = item.commentContents
+      } else {
+        this.hfPerson = ''
+        this.hfMessage = ''
+      }
       this.$refs.popup.open('bottom')
     },
     async getList() {
@@ -75,8 +99,18 @@ export default {
       })
       console.log('datalist', data)
       this.list = data.data
-    }
-    
+    },
+    async submitPlFn() {
+      const data = await addCommentRidicule({
+        contentId: this.id,
+        commentContents: this.formPl.commentContents,
+        creatUserId: this.formPl.creatUserId
+      })
+      if (data.code === 200) {
+        this.getList('refash')
+        this.$refs.popup.close()
+      }
+    },
   }
 }
 </script>
@@ -149,56 +183,30 @@ export default {
   }
 }
 .login-form {
+    height: 550rpx;
     border-radius: 40rpx 40rpx 0rpx 0rpx;
-    margin-top: -40rpx;
     background-color: #ffffff;
     overflow: hidden;
     position: relative;
     z-index: 1;
-    padding: 0 54rpx;
-
-    &-item {
-      padding-top: 50rpx;
-      padding-bottom: 24rpx;
-      border-bottom: 2rpx solid #f3f6fc;
-      position: relative;
-
-      &-label {
-        font-size: 32rpx;
-        font-weight: 500;
-        color: #333333;
-        margin-bottom: 40rpx;
-      }
-
-      &-input {
-        padding-right: 60rpx;
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-
-        &.noPadd {
-          padding-right: 0rpx;
-        }
-
-        .input {
-          width: 100%;
-          height: 100%;
-        }
-
-        .login-code-img {
-          width: 160rpx;
-          height: 60rpx;
-        }
-      }
-
-      .iconEye {
-        width: 44rpx;
-        height: 44rpx;
-        position: absolute;
-        right: 0;
-        bottom: 22rpx;
-      }
+    padding: 80rpx 54rpx 0;
+    position: relative;
+    .login-form-item {
+      border: 1px solid #e5e5e5;
+      padding: 30rpx;
+    }
+    .pl-btn {
+      width: 100%;
+      height: 100rpx;
+      line-height: 100rpx;
+      text-align: center;
+      background-color: $uni-text-color-tag-2;
+      font-size: 40rpx;
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0
     }
   }
 </style>
