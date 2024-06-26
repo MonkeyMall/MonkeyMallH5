@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import uniIcons from "@/pageSec/components/uni-icons/components/uni-icons/uni-icons.vue"
+import uniIcons from "@/components/uni-icons/components/uni-icons/uni-icons.vue"
 /**
  * Easyinput 输入框
  * @description 此组件可以实现表单的输入与校验，包括 "text" 和 "textarea" 类型。

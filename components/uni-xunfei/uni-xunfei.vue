@@ -111,6 +111,7 @@
 </template>
 
 <script>
+import uniPopup from '../uni-popup/components/uni-popup/uni-popup.vue'
 import keyWordObj from './keyWords'
 const recorderManager = wx.getRecorderManager();
 let wxst; //语音websocket
@@ -127,6 +128,9 @@ const searchoptions = {
 let that
 export default {
   name: 'uniXunfei',
+  components: {
+    uniPopup
+  },
   props: {
     is_Speech: {
       type: Boolean,

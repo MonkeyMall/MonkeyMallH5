@@ -1,6 +1,15 @@
 <template>
   <view>
-    首页
+    <view class="header">
+      <uni-easyinput 
+        prefixIcon="search" 
+        v-model="schoolName" 
+        placeholder="请输入学校名称" 
+        :suffixIcon="closeIcon" 
+        @iconClick="clear" 
+        @confirm="handxenamse"
+      ></uni-easyinput>
+    </view>
   </view>
 </template>
 
@@ -12,6 +21,8 @@
 export default {
   data() {
     return {
+      schoolName: '',
+      closeIcon: '',
       // api: config.baseUrl,
       // scrollTop: 0,
       // templatePage: Number(uni.getStorageSync('templateNum')) || 1, // 模板 Number(uni.getStorageSync('templateNum')) || 1
@@ -27,6 +38,13 @@ export default {
     }
   },
   watch: {
+    schoolName(n, o) {
+      if (!n) {
+        this.closeIcon = ''
+      } else {
+        this.closeIcon = 'close'
+      }
+    }
   },
   onPullDownRefresh() {
     // this.enablePullDownRefreshFn()
@@ -47,27 +65,25 @@ export default {
     };
   },
   methods: {
-    // 下拉刷新回调
-    enablePullDownRefreshFn() {
+    clear(e) {
+      console.log('zx', e)
+      if (e === 'suffix') {
+        this.schoolName = ''
+        // this.initData()
+      } else {
+        // this.initData()
+      }
     },
-    // 刷新页面
-    refashPage() {
-      
+    // 输入学校名称
+    handxenamse(schoolName) {
+      // this.initData(schoolName)
     },
-    //上拉加载获取更多的限时活动
-    async getmoreActives() {
-      // console.log('loadingStatus', this.loadingStatus)
-      // if (this.loadingStatus === 'nomore') {
-      //   return false;
-      // }
-      // this.loadingStatus = 'loading';
-      // if (this.listRb.length < this.total) {
-      //   this.obj.pageNum++
-      //   await this.getRbList()
-      // } else {
-      //   this.loadingStatus = 'nomore';
-      // }
-    }
   }
 }
 </script>
+
+<style>
+.header {
+  padding: 30rpx;
+}
+</style>

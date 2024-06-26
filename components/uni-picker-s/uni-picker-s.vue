@@ -1,38 +1,20 @@
 <template>
   <view>
     <view class="picker-view first">
-      <uni-data-picker
-        v-model="fenlei"
-        :map=maps
-        class="data-pickers"
-        placeholder="选择目标专业分类"
-        popup-title="请选择目标专业分类"
-        :localdata="grouList"
-        @change="onchange"
-      >
+      <uni-data-picker v-model="fenlei" :map=maps class="data-pickers" placeholder="选择目标专业分类" popup-title="请选择目标专业分类"
+        :localdata="grouList" @change="onchange">
       </uni-data-picker>
-      <uv-icon
-          name="arrow-right"
-          color="rgba(51, 51, 51, 1.00)"
-          size="18"
-        ></uv-icon>
+      <view class="icon-my">
+        <uv-icon name="arrow-right" color="rgba(51, 51, 51, 1.00)" size="18"></uv-icon>
+      </view>
     </view>
-    <view class="picker-view">
-      <uni-data-picker
-        v-model="zhuanye"
-        :map=maps
-        class="data-pickers"
-        placeholder="选择目标专业"
-        popup-title="请选择目标专业"
-        :localdata="grouListZy"
-        @change="onchangeZy"
-      >
+    <view class="picker-view" v-if="fenlei">
+      <uni-data-picker v-model="zhuanye" :map=maps class="data-pickers" placeholder="选择目标专业" popup-title="请选择目标专业"
+        :localdata="grouListZy" @change="onchangeZy">
       </uni-data-picker>
-      <uv-icon
-          name="arrow-right"
-          color="rgba(51, 51, 51, 1.00)"
-          size="18"
-        ></uv-icon>
+      <view class="icon-my">
+        <uv-icon name="arrow-right" color="rgba(51, 51, 51, 1.00)" size="18"></uv-icon>
+      </view>
     </view>
   </view>
 </template>
@@ -42,8 +24,12 @@ import {
   groupTree,
   AISubjectGroup
 } from "@/api/colleges/index"
+import uniDataPicker from "../uni-data-picker/components/uni-data-picker/uni-data-picker.vue"
+import uvIcon from '../uv-icon/components/uv-icon/uv-icon.vue'
+
 export default {
   name: 'UniPickerS',
+  components: { uniDataPicker, uvIcon },
   props: {
     obj: {
       type: Object,
@@ -58,7 +44,7 @@ export default {
         text: 'label',
         value: 'id'
       },
-      fenlei: [],
+      fenlei: '',
       zhuanye: [],
       selectList: [], // 保存已经选择的选项轨迹
       grouList: [], // 目标分类
@@ -242,11 +228,28 @@ export default {
   border-radius: 16px;
   background: #f6f8fd;
   height: 80rpx;
+  position: relative;
+  border-radius: 16rpx;
+
   &.first {
     margin-bottom: 36rpx;
   }
+
   .iconfont {
     font-size: 44rpx;
+  }
+
+
+  .data-pickers {
+    width: 100%;
+    position: absolute;
+  }
+
+  .icon-my {
+    position: absolute;
+    right: 15rpx;
+    z-index: 0;
+    pointer-events: none;
   }
 }
 </style>
