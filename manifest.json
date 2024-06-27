@@ -51,7 +51,8 @@
             "subPackages" : true
         },
         "usingComponents" : true,
-        "lazyCodeLoading": "requiredComponents"
+        "lazyCodeLoading" : "requiredComponents",
+        "permission" : {}
     },
     "vueVersion" : "2",
     "h5" : {

@@ -116,6 +116,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/deep/.uni-easyinput {
+  padding: 0 !important;
+}
 .header {
   padding: 30rpx;
 }

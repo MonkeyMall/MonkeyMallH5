@@ -3,7 +3,7 @@
     <view>
       <view class="header" v-if="userInfo">
         <image
-          :src="userInfo.header"
+          :src="host + userInfo.header"
           mode="scaleToFill"
         />
         <view class="name">{{ userInfo.username }}</view>
@@ -51,20 +51,15 @@
 </template>
 
 <script>
-import { randomAcquisition } from '@/api/work/english'
-import mineIndexTemplate1 from '@/pages/mine/components/mineIndexTemplate1.vue'
-import { getPhone, getAvatar } from '@/utils/auth'
-import { setTabBar } from '@/utils/utils'
-import { getWetchatName } from '@/utils/auth'
-
+import config from '@/config/index.js'
 export default {
   data() {
     return {
+      host: config.COS_CDN_PREFIX_http,
       userInfo: JSON.parse(uni.getStorageSync('userInfoJson')) || ''
     }
   },
   components: {
-    mineIndexTemplate1
   },
   onShow() {
     

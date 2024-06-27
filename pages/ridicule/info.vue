@@ -7,7 +7,7 @@
     <view class="ridicule-pl" v-if="list.length">
       <view class="ridicule-pl-item" v-for="(item,index) in list" :key="index">
         <view class="header">
-          <image class="ridicule-pl-header" src="" mode="aspectFill"></image>
+          <image class="ridicule-pl-header" :src="host + 'public/images/monkeymall/logo.png'" mode="aspectFill"></image>
           <text v-if="item.creatUserId">{{ item.userId.username }} 回复 {{ item.creatUserId.username }}</text>
           <text v-else>{{ item.userId.username }}</text>
         </view>
@@ -18,19 +18,23 @@
         </view>
       </view>
     </view>
-    <view class="plBtn" @click="openDialog(2)">评 论</view>
+    <view class="add-btn" @click="openDialog(2)">
+      <view class="iconfont">&#xe600;</view>
+     </view>
     <uv-popup ref="popup">
       <view class="login-form">
-        <view v-if="hfMessage">{{ hfMessage }}</view>
-        <view v-if="hfPerson">@{{ hfPerson }}</view>
+        <view v-if="hfMessage" class="hf-message">
+          <text v-if="hfPerson" class="hf-person">@{{ hfPerson }}</text>
+          {{ hfMessage }}
+        </view>
         <view class="login-form-item">
           <uv-textarea
             v-model="formPl.commentContents"
-            height="255rpx"
+            height="200rpx"
             border="none"
             placeholder="请输入您的评论"
             count
-            maxlength="500"
+            maxlength="100"
           ></uv-textarea>
         </view>
         <view class="pl-btn" @click="submitPlFn()">评论</view>
@@ -47,9 +51,11 @@ import {
 import {
   timestampToTime
 } from '@/utils/index.js'
+import config from '@/config/index.js'
 export default {
   data() {
     return {
+      host: config.COS_CDN_PREFIX_http,
       pageNum: 1,
       pageSize: 10,
       total: 0,
@@ -154,6 +160,8 @@ export default {
       padding: 30rpx 0;
       .header {
         display: flex;
+        align-items: center;
+        margin-bottom: 20rpx;
         image {
           width: 50rpx;
           height: 50rpx;
@@ -169,6 +177,7 @@ export default {
       .ridicule-pl-cons {
         font-size: 24rpx;
         color: $uni-text-color;
+        padding-left: 60rpx;
       }
       .date {
         display: flex;
@@ -200,24 +209,49 @@ export default {
     overflow: hidden;
     position: relative;
     z-index: 1;
-    padding: 80rpx 54rpx 0;
+    padding: 30rpx 30rpx 0;
     position: relative;
+    .hf-message {
+      font-size: 28rpx;
+      font-weight: 500;
+      margin-bottom: 30rpx;
+      line-height: 1.5;
+    }
+    .hf-person {
+      font-size: 26rpx;
+      color: #999;
+      margin-right: 18rpx;
+    }
     .login-form-item {
       border: 1px solid #e5e5e5;
-      padding: 30rpx;
+      // padding: 20rpx;
     }
     .pl-btn {
-      width: 100%;
-      height: 100rpx;
-      line-height: 100rpx;
+      width: calc(100% - 60rpx);
+      height: 80rpx;
+      line-height: 80rpx;
+      border-radius: 80rpx;
       text-align: center;
-      background-color: $uni-text-color-tag-2;
-      font-size: 40rpx;
+      background-color: $uni-color-fz;
+      font-size: 34rpx;
       color: #fff;
       position: absolute;
       bottom: 0;
-      left: 0;
-      right: 0
+      left: 30rpx;
     }
+  }
+  .add-btn {
+    width: 100rpx;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $uni-color-fz;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 100rpx;
+    right: 30rpx;
+    z-index: 999;
+    color: #fff;
   }
 </style>

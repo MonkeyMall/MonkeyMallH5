@@ -180,7 +180,7 @@ export default {
   background: #fff;
   &-lable {
     width: 50rpx;
-    height: 100%;
+    // height: 100%;
     font-size: 30rpx;
     color: $uni-color-fz;
     background: #f3fbfb;
@@ -190,8 +190,8 @@ export default {
   }
   &-des {
     flex: 1;
-    margin: 10rpx 0;
-    font-size: 24rpx;
+    // margin: 10rpx 0;
+    font-size: 28rpx;
     color: #333;
     background: #f3fbfb;
     border-radius: 4rpx;
