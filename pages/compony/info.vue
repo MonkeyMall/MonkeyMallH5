@@ -32,7 +32,41 @@
         <view>一金： {{ info.insurance === '1' ? '有' : '无' }}</view>
         <view>福利： {{ info.welfare }}</view>
       </view>
+      <view class="label">工作感受</view>
+      <view class="pl-list">
+        <view class="pl-list-ul">
+          <view class="pl-list-li">
+            <view>小张</view>
+            <view  class="pl-list-li-des">工作感受工作感受工作感受工作感受</view>
+          </view>
+          <view class="pl-list-li">
+            <view>小张</view>
+            <view  class="pl-list-li-des">工作感受工作感受工作感受工作感受</view>
+          </view>
+        </view>
+      </view>
     </view>
+    <!-- 评论公司按钮 -->
+    <view class="add-btn" @click="addPlFn">
+      <view class="iconfont">&#xe600;</view>
+     </view>
+     <uv-popup ref="popup">
+      <view class="login-form">
+        <view v-if="hfMessage">{{ hfMessage }}</view>
+        <view v-if="hfPerson">@{{ hfPerson }}</view>
+        <view class="login-form-item">
+          <uv-textarea
+            v-model="formPl.commentContents"
+            height="255rpx"
+            border="none"
+            placeholder="请输入您的评论"
+            count
+            maxlength="500"
+          ></uv-textarea>
+        </view>
+        <view class="pl-btn" @click="submitPlFn()">评论</view>
+      </view>
+    </uv-popup>
   </view>
 </template>
 
@@ -66,6 +100,20 @@ export default {
       })
       console.log('datalist', data)
       this.info = data.data[0]
+    },
+    addPlFn() {
+      this.$refs.popup.open('bottom')
+    },
+    async submitPlFn() {
+      // const data = await addCommentRidicule({
+      //   contentId: this.id,
+      //   commentContents: this.formPl.commentContents,
+      //   creatUserId: this.formPl.creatUserId
+      // })
+      // if (data.code === 200) {
+      //   this.getList('refash')
+      //   this.$refs.popup.close()
+      // }
     }
   }
 }
@@ -147,5 +195,84 @@ export default {
   font-size: 28rpx;
   color: #333;
   margin-top: 20rpx;
+}
+.label {
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8rpx;
+    height: 34rpx;
+    background: $uni-color-fz;
+    border-radius: 8rpx;
+    margin-right: 10rpx;
+  }
+}
+.pl-list {
+  padding: 20rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  font-size: 28rpx;
+  color: #333;
+  &-li {
+    padding: 0 10rpx;
+    border-radius: 4rpx;
+    &:not(:last-child) {
+      padding-bottom: 30rpx;
+      border-bottom: 1px solid #f3fbfb;
+      margin-bottom: 30rpx;
+    }
+    &-des {
+      font-size: 24rpx;
+      padding: 10rpx 10rpx 20rpx 10rpx;
+      background: #f3fbfb;
+      margin-top: 10rpx;
+    }
+  }
+}
+.add-btn {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $uni-color-fz;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 100rpx;
+  right: 30rpx;
+  z-index: 999;
+  color: #fff;
+}
+.login-form {
+  height: 550rpx;
+  border-radius: 40rpx 40rpx 0rpx 0rpx;
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 80rpx 54rpx 0;
+  position: relative;
+  .login-form-item {
+    border: 1px solid #e5e5e5;
+    padding: 30rpx;
+  }
+  .pl-btn {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background-color: $uni-text-color-tag-2;
+    font-size: 40rpx;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0
+  }
 }
 </style>
