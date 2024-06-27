@@ -9,6 +9,7 @@
         <view class="compony-list-item-right">
           <view class="compony-list-item-right-title">
             <text>{{ info.name }}</text>
+            <view class="iconfont">&#xe60a;</view>
           </view>
           <view class="compony-list-item-right-address">
             <text>{{ info.address }}</text>
@@ -100,9 +101,17 @@ export default {
       this.info = data.data[0]
     },
     addPlFn() {
-      this.$refs.popup.open('bottom')
+      let token = uni.getStorageSync('token') || ''
+      if (!token) {
+        uni.navigateTo({
+          url: '/pages/login'
+        })
+      } else {
+        this.$refs.popup.open('bottom')
+      }
     },
     async submitPlFn() {
+      
       // const data = await addCommentRidicule({
       //   contentId: this.id,
       //   commentContents: this.formPl.commentContents,
@@ -140,6 +149,12 @@ export default {
         font-size: 36rpx;
         font-weight: bold;
         margin-bottom: 10rpx;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .iconfont {
+          font-size: 44rpx;
+        }
       }
       &-address {
         font-size: 28rpx;

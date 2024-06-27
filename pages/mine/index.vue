@@ -13,14 +13,14 @@
         <view class="uset-list-item">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe644;</view>
-            <view>我的提问</view>
+            <view>我要提问</view>
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
         <view class="uset-list-item">
           <view class="uset-list-item-label">
-            <view class="iconfont">&#xe618;</view>
-            <view>我的订单</view>
+            <view class="iconfont">&#xe6bf;</view>
+            <view>我的侃言</view>
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
@@ -33,8 +33,15 @@
         </view>
         <view class="uset-list-item">
           <view class="uset-list-item-label">
-            <view class="iconfont">&#xe644;</view>
+            <view class="iconfont">&#xe60a;</view>
             <view>侃言收藏</view>
+          </view>
+          <view class="iconfont right">&#xe840;</view>
+        </view>
+        <view class="uset-list-item">
+          <view class="uset-list-item-label">
+            <view class="iconfont">&#xe618;</view>
+            <view>我的订单</view>
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>

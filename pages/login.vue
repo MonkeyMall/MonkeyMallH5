@@ -98,7 +98,7 @@ export default {
       console.log('提交的参数', this.loginForm)
       this.$store.dispatch('Login', this.loginForm).then((res) => {
         // console.log('登录成功后的res：', res)
-        this.$tab.reLaunch('/pages/index')
+        this.$tab.navigateBack()
       })
     }
   }

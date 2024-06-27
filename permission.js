@@ -6,33 +6,13 @@ const loginPage = "/pages/login"
 // 页面白名单
 const whiteList = [
   '/pages/login', // 登录页
-  '/pages/ridicule/info', // 支付页
+  '/pages/ridicule/info', // 
   '/pages/index', // 首页
   '/pages/compony/info', // 公司详情
-  '/pages/work/index', // 刷题
   '/pages/common/webview/index', // webview页面
-  '/pageFive/tomato/index', // 番茄
-  '/pageFive/tomato/index', // 自定义
-  '/pageFive/work/examination/index', // 考试
-  '/pageSec/timerPage/positiveTiming/index', // 正计时
-  '/pageSec/timerPage/countdown/index', // 倒计时
   '/pages/mine/index', // 我的
   '/pageSec/mine/orderlist/index', // 订单列表
-  '/pageSec/mine/orderlist/orderInfo', // 订单详情
-  '/pageSec/mine/orderlist/voucher', // 支付凭证
-  '/pageSec/mine/info/finshUserInfo', // 完善资料
-  '/pageSec/AIchooseschool/index', // AI选校
-  '/pageSec/checkthemajor/index', // 专业查询
-  '/pageSec/checkcolleges/index', // 院校查询
-  '/pageSec/countrylineinquiry/index', // 国家线
-  '/pageThe/schoolcomparison/contrastselection', // 院校对比
-  '/pages/zdyi',  //  用户协议
-  '/pageFive/tomato/timer', // 番茄
-  '/pageFive/tomato/edit',
-  '/pageFive/work/examination/clock',
-  '/pageFive/work/examination/testSwitch',
-  // '/pageSec/mine/info/index',
-  '/pages/teacherImg'
+  '/pageSec/mine/orderlist/orderInfo' // 订单详情
 ]
 
 // 需要做权限的页面
@@ -49,10 +29,6 @@ const needPromiseList = [
     url: '/pageThe/schoolcomparison/institutions', // 院校对比
     promise: 'pageThe_schoolcomparison_contrastselection'
   },
-  // {
-  //   url: '/pageSec/countrylineinquiry/index', // 国家线查询
-  //   promise: 'pageSec_countrylineinquiry_index'
-  // },
   {
     url: '/pageThe/checkthemajor/professional', // AI智能择校
     promise: 'pageSec_AIchooseschool_index'

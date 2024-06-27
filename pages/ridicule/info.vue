@@ -14,7 +14,7 @@
         <view class="ridicule-pl-cons">{{ item.commentContents }}</view>
         <view class="date">
           <view @click="openDialog(1, item)">回复</view>
-          <view>{{ item.startTime }}</view>
+          <view>{{ timestampToTime(item.startTime) }}</view>
         </view>
       </view>
     </view>
@@ -44,6 +44,9 @@ import {
   getCommentList,
   addCommentRidicule
 } from '@/api/guoguo.js'
+import {
+  timestampToTime
+} from '@/utils/index.js'
 export default {
   data() {
     return {
@@ -81,16 +84,24 @@ export default {
     
   },
   methods: {
+    timestampToTime,
     openDialog(type, item) {
-      if (type === 1) {
-        this.formPl.creatUserId = item.userId._id
-        this.hfPerson = item.userId.username
-        this.hfMessage = item.commentContents
+      let token = uni.getStorageSync('token') || ''
+      if (!token) {
+        uni.navigateTo({
+          url: '/pages/login'
+        })
       } else {
-        this.hfPerson = ''
-        this.hfMessage = ''
+        if (type === 1) {
+          this.formPl.creatUserId = item.userId._id
+          this.hfPerson = item.userId.username
+          this.hfMessage = item.commentContents
+        } else {
+          this.hfPerson = ''
+          this.hfMessage = ''
+        }
+        this.$refs.popup.open('bottom')
       }
-      this.$refs.popup.open('bottom')
     },
     async getList() {
       const data = await getCommentList({

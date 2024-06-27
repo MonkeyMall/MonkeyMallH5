@@ -48,7 +48,7 @@
 	],
 	"tabBar": {
 		"color": "#000000",
-		"selectedColor": "#fb5564",
+		"selectedColor": "#1296db",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [
@@ -56,13 +56,13 @@
 				"pagePath": "pages/index",
 				"iconPath": "static/images/tabbar/home.png",
 				"selectedIconPath": "static/images/tabbar/home_.png",
-				"text": "首页"
+				"text": "公司"
 			},
 			{
 				"pagePath": "pages/ridicule/index",
 				"iconPath": "static/images/tabbar/work.png",
 				"selectedIconPath": "static/images/tabbar/work_.png",
-				"text": "刷题"
+				"text": "侃言"
 			},
 			{
 				"pagePath": "pages/mine/index",
