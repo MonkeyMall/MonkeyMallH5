@@ -55,13 +55,17 @@ const user = {
     Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       const password = userInfo.password
+      const openid = userInfo.openid
+      const header = userInfo.header
       return new Promise((resolve, reject) => {
         login({
           username,
           password,
-          
+          openid,
+          header
         }).then(res => {
           uni.setStorageSync('userInfoJson', JSON.stringify(res.data))
+          uni.setStorageSync('token', res.token)
           resolve()
         }).catch(error => {
           reject(error)

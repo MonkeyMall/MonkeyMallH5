@@ -22,11 +22,8 @@
 //       break;
 // }
 module.exports = {
-  // baseUrl,
-  // baseUrl: 'https://vue.ruoyi.vip/prod-api',
   baseUrl: 'http://localhost:8080/api',//本地环境
-  // baseUrl: 'https://kaoyan.yykjedu.com/api',//测试环境
-  // baseUrl: 'https://ky.yykjedu.com/prod-api',//线上环境
+  // baseUrl: 'http://47.121.121.204:8080/api',//测试环境
   // 应用信息
   appInfo: {
     // 应用名称

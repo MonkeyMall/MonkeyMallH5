@@ -22,10 +22,14 @@ const request = config => {
   // if (getToken() && !isToken) {
   //   config.header['Authorization'] = 'Bearer ' + getToken()
   // }
-  let cookie = 'account=songyanbin; userInfo={"_id":"666840a5e1ac8c0e360445d5","username":"songyanbin"}'
+  // let cookie = 'account=songyanbin; userInfo={"_id":"667cdb2dbc904c36efd41a18","username":"songyanbin"}'
   config.header = {
-    "Content-Type": "application/x-www-form-urlencoded",
-    "Cookie": cookie
+    "Content-Type": "application/x-www-form-urlencoded"
+  }
+  let token = uni.getStorageSync('token') || ''
+  if (token) {
+    let cookie = JSON.stringify('account=' + JSON.parse((uni.getStorageSync('token'))).username + '; userInfo=' + token)
+    config.header.Cookie = cookie
   }
   if (!hasErrorMsg && config.header.hasLoading) {
 		uni.showLoading({
