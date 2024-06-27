@@ -7,7 +7,7 @@
       </image>
       <view class="title">
         <view class="hellow">您好，</view>
-        <view>欢迎使用研毅boss助手</view>
+        <view>欢迎来到猿社区</view>
       </view>
     </view>
     <view class="login-form">

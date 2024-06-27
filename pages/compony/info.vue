@@ -52,19 +52,17 @@
      </view>
      <uv-popup ref="popup">
       <view class="login-form">
-        <view v-if="hfMessage">{{ hfMessage }}</view>
-        <view v-if="hfPerson">@{{ hfPerson }}</view>
         <view class="login-form-item">
           <uv-textarea
             v-model="formPl.commentContents"
             height="255rpx"
             border="none"
-            placeholder="请输入您的评论"
+            placeholder="请输入您的在职感受。"
             count
-            maxlength="500"
+            maxlength="200"
           ></uv-textarea>
+          <view class="pl-btn" @click="submitPlFn()">评论</view>
         </view>
-        <view class="pl-btn" @click="submitPlFn()">评论</view>
       </view>
     </uv-popup>
   </view>
@@ -249,30 +247,29 @@ export default {
   color: #fff;
 }
 .login-form {
-  height: 550rpx;
-  border-radius: 40rpx 40rpx 0rpx 0rpx;
+  height: 450rpx;
   background-color: #ffffff;
   overflow: hidden;
-  position: relative;
   z-index: 1;
-  padding: 80rpx 54rpx 0;
+  padding: 30rpx;
   position: relative;
   .login-form-item {
+    border-radius: 10rpx;
     border: 1px solid #e5e5e5;
     padding: 30rpx;
   }
   .pl-btn {
-    width: 100%;
-    height: 100rpx;
-    line-height: 100rpx;
+    width: calc(100% - 60rpx);
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 80rpx;
     text-align: center;
-    background-color: $uni-text-color-tag-2;
-    font-size: 40rpx;
+    background-color: $uni-color-fz;
+    font-size: 34rpx;
     color: #fff;
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0
+    left: 30rpx;
   }
 }
 </style>
