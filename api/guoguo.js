@@ -28,6 +28,15 @@ export function addCommentRidicule(params) {
 	})
 }
 
+// 公司列表
+export function getComponyList(query) {
+  return request({
+    url: '/company/list',
+    method: 'get',
+    params: query
+  })
+}
+
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {
 // 	return request({

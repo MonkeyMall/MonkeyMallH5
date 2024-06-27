@@ -6,6 +6,12 @@
 				"navigationBarTitleText": "首页"
 			}
 		},
+    {
+			"path": "pages/compony/info",
+			"style": {
+				"navigationBarTitleText": "公司详情"
+			}
+		},
 		{
 			"path": "pages/ridicule/index",
 			"style": {
