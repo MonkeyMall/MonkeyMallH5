@@ -1,6 +1,6 @@
 module.exports = {
-  baseUrl: 'http://localhost:8080/api',//本地环境
-  // baseUrl: 'http://47.121.121.204:8080/api',//测试环境
+  // baseUrl: 'http://localhost:8080/api',//本地环境
+  baseUrl: 'http://47.121.121.204:8080/api',//测试环境
   // 应用信息
   appInfo: {
     // 应用名称
