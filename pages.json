@@ -12,10 +12,22 @@
 				"navigationBarTitleText": "公司详情"
 			}
 		},
+    {
+			"path": "pages/compony/collect",
+			"style": {
+				"navigationBarTitleText": "公司收藏"
+			}
+		},
 		{
 			"path": "pages/ridicule/index",
 			"style": {
 				"navigationBarTitleText": "侃言"
+			}
+		},
+    {
+			"path": "pages/ridicule/add",
+			"style": {
+				"navigationBarTitleText": "侃言发布"
 			}
 		},
     {

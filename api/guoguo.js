@@ -55,6 +55,24 @@ export function getCommentsComponyList(query) {
   })
 }
 
+// 用户收藏的公司列表
+export function getCompanyCollectList(query) {
+  return request({
+    url: '/company/collect/list',
+    method: 'get',
+    params: query
+  })
+}
+
+// 用户收藏公司
+export function commentsCollect(params) {
+  return request({
+    url: '/compony/collect',
+    method: "post",
+		data: params
+  })
+}
+
 
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {

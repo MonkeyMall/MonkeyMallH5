@@ -121,7 +121,7 @@ export default {
       const data = await addCommentRidicule({
         contentId: this.id,
         commentContents: this.formPl.commentContents,
-        creatUserId: this.formPl.creatUserId
+        creatUserId: this.formPl.creatUserId || ''
       })
       if (data.code === 200) {
         this.getList('refash')

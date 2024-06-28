@@ -7,8 +7,10 @@ const loginPage = "/pages/login"
 const whiteList = [
   '/pages/login', // 登录页
   '/pages/ridicule/info', // 
+  '/pages/ridicule/add',
   '/pages/index', // 首页
   '/pages/compony/info', // 公司详情
+  '/pages/compony/collect', // 公司详情
   '/pages/common/webview/index', // webview页面
   '/pages/mine/index', // 我的
   '/pageSec/mine/orderlist/index', // 订单列表

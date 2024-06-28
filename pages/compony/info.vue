@@ -9,7 +9,7 @@
         <view class="compony-list-item-right">
           <view class="compony-list-item-right-title">
             <text>{{ info.name }}</text>
-            <view class="iconfont">&#xe60a;</view>
+            <view class="iconfont" @click="collectFn">&#xe60a;</view>
           </view>
           <view class="compony-list-item-right-address">
             <text>{{ info.address }}</text>
@@ -69,11 +69,9 @@
 import {
   getComponyList,
   setCommentsComponyAdd,
-  getCommentsComponyList
+  getCommentsComponyList,
+  commentsCollect,
 } from '@/api/guoguo.js'
-// import { listForApplet } from '@/api/comm'
-// import { getWetchatName } from '@/utils/auth'
-// import config from '@/config'
 
 export default {
   data() {
@@ -135,6 +133,18 @@ export default {
       if (data.code === 200) {
         this.getComponyCommentListFn('refash')
         this.$refs.popup.close()
+      }
+    },
+    // 收藏公司
+    async collectFn() {
+      const data = await commentsCollect({
+        componyId: this.id
+      })
+      if (data.code === 200) {
+        uni.showToast({
+          title: '收藏成功！',
+          icon: 'none'
+        })
       }
     }
   }

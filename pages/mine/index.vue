@@ -10,7 +10,7 @@
       </view>
       <view v-else class="loginBtn" @click="goLogin">登 录</view>
       <view class="uset-list">
-        <view class="uset-list-item">
+        <view class="uset-list-item" @click="goPage('/pages/ridicule/add')">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe644;</view>
             <view>我要提问</view>
@@ -24,7 +24,7 @@
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
-        <view class="uset-list-item">
+        <view class="uset-list-item" @click="goPage('/pages/compony/collect')">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe60a;</view>
             <view>公司收藏</view>
@@ -82,6 +82,18 @@ export default {
       uni.navigateTo({
         url: '/pages/login/index'
       })
+    },
+    goPage(url) {
+      let token = uni.getStorageSync('token') || ''
+      if (!token) {
+        uni.navigateTo({
+          url: '/pages/login'
+        })
+      } else {
+        uni.navigateTo({
+          url
+        })
+      }
     }
   }
 }
