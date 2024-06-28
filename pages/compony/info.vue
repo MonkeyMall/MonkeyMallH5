@@ -36,13 +36,9 @@
       <view class="label">工作感受</view>
       <view class="pl-list">
         <view class="pl-list-ul">
-          <view class="pl-list-li">
-            <view>小张</view>
-            <view  class="pl-list-li-des">工作感受工作感受工作感受工作感受</view>
-          </view>
-          <view class="pl-list-li">
-            <view>小张</view>
-            <view  class="pl-list-li-des">工作感受工作感受工作感受工作感受</view>
+          <view class="pl-list-li" v-for="(item, index) in componyCommentList" :key="index">
+            <view>{{ item.userId.username}}</view>
+            <view  class="pl-list-li-des">{{ item.componyContents}}</view>
           </view>
         </view>
       </view>
@@ -55,14 +51,14 @@
       <view class="login-form">
         <view class="login-form-item">
           <uv-textarea
-            v-model="formPl.commentContents"
+            v-model="componyContents"
             height="255rpx"
             border="none"
             placeholder="请输入您的在职感受。"
             count
             maxlength="200"
           ></uv-textarea>
-          <view class="pl-btn" @click="submitPlFn()">评论</view>
+          <view class="pl-btn" @click="submitPlFn()">评 论</view>
         </view>
       </view>
     </uv-popup>
@@ -71,7 +67,9 @@
 
 <script>
 import {
-  getComponyList
+  getComponyList,
+  setCommentsComponyAdd,
+  getCommentsComponyList
 } from '@/api/guoguo.js'
 // import { listForApplet } from '@/api/comm'
 // import { getWetchatName } from '@/utils/auth'
@@ -80,19 +78,28 @@ import {
 export default {
   data() {
     return {
+      pageNum: 1,
+      pageSize: 10,
       name: '',
       info: null,
-      name: ''
+      name: '',
+      id: '',
+      componyContents: '', // 公司评论的内容
+      componyCommentList: [], // 公司评论列表
     }
   },
   onLoad(options) {
+    this.name = options.name
+    this.id = options.id
     this.getList({
       name: options.name,
       limte: 10,
       page: 1
     })
+    this.getComponyCommentListFn('refash')
   },
   methods: {
+    // 公司详情
     async getList(obj) {
       const data = await getComponyList({
         ...obj
@@ -100,6 +107,7 @@ export default {
       console.log('datalist', data)
       this.info = data.data[0]
     },
+    // 点击评论公司按钮
     addPlFn() {
       let token = uni.getStorageSync('token') || ''
       if (!token) {
@@ -110,17 +118,24 @@ export default {
         this.$refs.popup.open('bottom')
       }
     },
+    // 获取公司的评论列表
+    async getComponyCommentListFn() {
+      const data = await getCommentsComponyList({
+        page: 1,
+        componyId: this.id
+      })
+      console.log('datalist', data)
+      this.componyCommentList = data.data || []
+    },
     async submitPlFn() {
-      
-      // const data = await addCommentRidicule({
-      //   contentId: this.id,
-      //   commentContents: this.formPl.commentContents,
-      //   creatUserId: this.formPl.creatUserId
-      // })
-      // if (data.code === 200) {
-      //   this.getList('refash')
-      //   this.$refs.popup.close()
-      // }
+      const data = await setCommentsComponyAdd({
+        componyId: this.id,
+        componyContents: this.componyContents
+      })
+      if (data.code === 200) {
+        this.getComponyCommentListFn('refash')
+        this.$refs.popup.close()
+      }
     }
   }
 }

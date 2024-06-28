@@ -28,8 +28,8 @@ const request = config => {
   }
   let token = uni.getStorageSync('token') || ''
   if (token) {
-    let cookie = JSON.stringify('account=' + JSON.parse((uni.getStorageSync('token'))).username + '; userInfo=' + token)
-    config.header.Cookie = cookie
+    let cookie = 'account=' + JSON.parse((uni.getStorageSync('token'))).username + '; userInfo=' + token
+    config.header.cookies = cookie
   }
   if (!hasErrorMsg && config.header.hasLoading) {
 		uni.showLoading({

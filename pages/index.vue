@@ -108,7 +108,7 @@ export default {
     // 跳转详情
     goInfo(info) {
       uni.navigateTo({
-        url: '/pages/compony/info?name=' + info.name
+        url: '/pages/compony/info?name=' + info.name + '&id=' + info._id
       })
     }
   }

@@ -37,6 +37,25 @@ export function getComponyList(query) {
   })
 }
 
+// 公司评论
+export function setCommentsComponyAdd(params) {
+  return request({
+    url: '/commentsCompony/add',
+    method: "post",
+		data: params
+  })
+}
+
+// 公司评论列表
+export function getCommentsComponyList(query) {
+  return request({
+    url: '/commentsCompony/list',
+    method: 'get',
+    params: query
+  })
+}
+
+
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {
 // 	return request({
