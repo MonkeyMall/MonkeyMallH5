@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       host: config.COS_CDN_PREFIX_http,
-      userInfo: JSON.parse(uni.getStorageSync('userInfoJson')) || ''
+      userInfo: uni.getStorageSync('userInfoJson') ? JSON.parse(uni.getStorageSync('userInfoJson')) : ''
     }
   },
   components: {
