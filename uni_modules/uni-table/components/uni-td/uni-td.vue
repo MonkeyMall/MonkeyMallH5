@@ -75,19 +75,13 @@
 
 	.uni-table-td {
 		display: table-cell;
-		height: 80rpx;
-		line-height: 80rpx;
+		padding: 8px 10px;
 		font-size: 14px;
 		border-bottom: 1px $border-color solid;
-		font-weight: 600;
+		font-weight: 400;
 		color: #606266;
+		line-height: 23px;
 		box-sizing: border-box;
-		font-weight: 600;
-		letter-spacing: 0px;
-		color: rgba(51, 51, 51, 1);
-		text-align: center;
-		vertical-align: top;
-
 	}
 
 	.table--border {

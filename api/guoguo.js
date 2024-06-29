@@ -82,7 +82,21 @@ export function getCompanyCollectIsCollect(query) {
   })
 }
 
+export function addRidicule(params) {
+	return axios({
+		url: "/ridicule/add",
+		method: "post",
+		data: params
+	});
+}
 
+export function editRidicule(params) {
+	return axios({
+		url: "/ridicule/edit",
+		method: "post",
+		data: params
+	});
+}
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {
 // 	return request({

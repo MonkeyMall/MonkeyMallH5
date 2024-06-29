@@ -83,7 +83,7 @@
 				// #endif
 
 				// #ifndef APP-NVUE
-				uni.pageScrollTo({
+				uni.pageFiverollTo({
 					scrollTop: 0,
 					duration: this.duration
 				});

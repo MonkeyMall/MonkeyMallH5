@@ -8,7 +8,7 @@
       :key="index"
     >
       <view
-        class="uv-album__row__wrapper"
+        :class="['uv-album__row__wrapper', urls.length > 1 ? 'duotu' : 'dantu']"
         v-for="(item, index1) in arr"
         :key="index1"
         :style="[imageStyle(index + 1, index1 + 1)]"

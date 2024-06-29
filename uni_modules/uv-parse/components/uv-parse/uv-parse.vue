@@ -204,7 +204,7 @@ export default {
             this._in.page[this._in.scrollTop] = scrollTop
           } else {
             // 页面跳转
-            uni.pageScrollTo({
+            uni.pageFiverollTo({
               scrollTop,
               duration: 300
             })

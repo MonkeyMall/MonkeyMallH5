@@ -209,8 +209,7 @@ $border-color: #ebeef5;
 $uni-primary: #007aff !default;
 
 .uni-table-th {
-	height: 80rpx;
-	line-height: 80rpx;
+	padding: 12px 10px;
 	/* #ifndef APP-NVUE */
 	display: table-cell;
 	box-sizing: border-box;
@@ -218,8 +217,7 @@ $uni-primary: #007aff !default;
 	font-size: 14px;
 	font-weight: bold;
 	color: #909399;
-	background-color: #F6F8FD;
-	width: 100rpx;
+	border-bottom: 1px $border-color solid;
 }
 
 .uni-table-th-row {
@@ -230,6 +228,7 @@ $uni-primary: #007aff !default;
 }
 
 .table--border {
+	border-right: 1px $border-color solid;
 }
 .uni-table-th-content {
 	display: flex;

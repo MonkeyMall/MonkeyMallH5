@@ -20,7 +20,6 @@
 			<picker-view
 				class="uv-picker__view"
 				:indicatorStyle="`height: ${$uv.addUnit(itemHeight)}`"
-				indicator-class="picker-box"
 				:value="innerIndex"
 				:immediateChange="immediateChange"
 				:style="{
@@ -128,6 +127,7 @@ export default {
 		},
 		// 监听columns参数的变化
 		columns: {
+			deep: true,
 			immediate: true,
 			handler(n) {
 				this.setColumns(n)
