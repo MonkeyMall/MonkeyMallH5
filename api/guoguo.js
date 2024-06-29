@@ -73,6 +73,15 @@ export function commentsCollect(params) {
   })
 }
 
+// 用户收藏的公司状态
+export function getCompanyCollectIsCollect(query) {
+  return request({
+    url: '/company/collect/isCollect',
+    method: 'get',
+    params: query
+  })
+}
+
 
 // // 红包雨结束后确定接口
 // export function addActiveData(data) {

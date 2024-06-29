@@ -9,7 +9,7 @@
         <view class="compony-list-item-right">
           <view class="compony-list-item-right-title">
             <text>{{ info.name }}</text>
-            <view class="iconfont" @click="collectFn">&#xe60a;</view>
+            <view :class="['iconfont', isCollect ? 'isCollect' : '']" @click="collectFn">&#xe60a;</view>
           </view>
           <view class="compony-list-item-right-address">
             <text>{{ info.address }}</text>
@@ -71,6 +71,7 @@ import {
   setCommentsComponyAdd,
   getCommentsComponyList,
   commentsCollect,
+  getCompanyCollectIsCollect
 } from '@/api/guoguo.js'
 
 export default {
@@ -84,6 +85,7 @@ export default {
       id: '',
       componyContents: '', // 公司评论的内容
       componyCommentList: [], // 公司评论列表
+      isCollect: false // 是否收藏
     }
   },
   onLoad(options) {
@@ -95,6 +97,10 @@ export default {
       page: 1
     })
     this.getComponyCommentListFn('refash')
+    let token = uni.getStorageSync('token') || ''
+    if (token) {
+      this.isCollectFn()
+    }
   },
   methods: {
     // 公司详情
@@ -137,14 +143,32 @@ export default {
     },
     // 收藏公司
     async collectFn() {
-      const data = await commentsCollect({
+      let token = uni.getStorageSync('token') || ''
+      if (!token) {
+        uni.navigateTo({
+          url: '/pages/login'
+        })
+      } else {
+        const data = await commentsCollect({
+          componyId: this.id,
+          type: this.isCollect ? 0 : 1
+        })
+        if (data.code === 200) {
+          this.isCollectFn()
+          uni.showToast({
+            title: '收藏成功！',
+            icon: 'none'
+          })
+        }
+      }
+    },
+    // 收藏公司状态
+    async isCollectFn() {
+      const data = await getCompanyCollectIsCollect({
         componyId: this.id
       })
       if (data.code === 200) {
-        uni.showToast({
-          title: '收藏成功！',
-          icon: 'none'
-        })
+        this.isCollect = data.isCollect
       }
     }
   }
@@ -179,6 +203,9 @@ export default {
         justify-content: space-between;
         .iconfont {
           font-size: 44rpx;
+          &.isCollect {
+            color: #ff6600;
+          }
         }
       }
       &-address {
