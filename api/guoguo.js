@@ -83,18 +83,18 @@ export function getCompanyCollectIsCollect(query) {
 }
 
 export function addRidicule(params) {
-	return axios({
+	return request({
 		url: "/ridicule/add",
 		method: "post",
 		data: params
 	});
 }
 
-export function editRidicule(params) {
-	return axios({
+export function editRidicule(query) {
+	return request({
 		url: "/ridicule/edit",
 		method: "post",
-		data: params
+		params: query
 	});
 }
 // // 红包雨结束后确定接口

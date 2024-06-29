@@ -20,7 +20,7 @@
         </view>
       </view>
     </view>
-    <view class="bcbtns" @click="quit">发 布</view>
+    <view class="bcbtns" @click="submitFn">发 布</view>
     <uv-picker 
       ref="picker" 
       :columns="category" 
@@ -67,6 +67,17 @@ export default {
     async submitFn() {
       const data = await addRidicule(this.loginForm)
       console.log(data)
+      if (data.code === 200) {
+        uni.showToast({
+          title: '发布成功',
+          icon: 'none'
+        })
+        setTimeout(() => {
+          uni.navigateTo({
+            url: '/pages/ridicule/index'
+          })
+        }, 600)
+      }
     },
     confirm(e) {
       console.log('confirm', e.value[0].value);
