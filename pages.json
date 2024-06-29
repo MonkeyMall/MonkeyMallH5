@@ -25,6 +25,12 @@
 			}
 		},
     {
+			"path": "pages/mine/myRidicule",
+			"style": {
+				"navigationBarTitleText": "我的侃言"
+			}
+		},
+    {
 			"path": "pages/ridicule/add",
 			"style": {
 				"navigationBarTitleText": "侃言发布"

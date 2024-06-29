@@ -10,6 +10,15 @@ export function getRidiculeList(query) {
   })
 }
 
+// 我的侃言列表
+export function getRidiculeMyList(query) {
+  return request({
+    url: '/ridicule/my/list',
+    method: 'get',
+    params: query
+  })
+}
+
 // 侃言评论列表
 export function getCommentList(query) {
   return request({

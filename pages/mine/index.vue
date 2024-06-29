@@ -17,7 +17,7 @@
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
-        <view class="uset-list-item">
+        <view class="uset-list-item" @click="goPage('/pages/mine/myRidicule')">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe6bf;</view>
             <view>我的侃言</view>

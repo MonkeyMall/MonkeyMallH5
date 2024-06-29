@@ -37,7 +37,7 @@
             maxlength="100"
           ></uv-textarea>
         </view>
-        <view class="pl-btn" @click="submitPlFn()">评论</view>
+        <view class="pl-btn" @click="submitPlFn()">{{hfPerson ? '回 复' : '留 言'}}</view>
       </view>
     </uv-popup>
   </view>

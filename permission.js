@@ -6,7 +6,8 @@ const loginPage = "/pages/login"
 // 页面白名单
 const whiteList = [
   '/pages/login', // 登录页
-  'pages/ridicule/index',
+  '/pages/ridicule/index',
+  '/pages/mine/myRidicule',
   '/pages/ridicule/info', // 
   '/pages/ridicule/add',
   '/pages/index', // 首页

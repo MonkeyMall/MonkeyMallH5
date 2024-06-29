@@ -58,7 +58,7 @@
             count
             maxlength="200"
           ></uv-textarea>
-          <view class="pl-btn" @click="submitPlFn()">评 论</view>
+          <view class="pl-btn" @click="submitPlFn()">工作感受</view>
         </view>
       </view>
     </uv-popup>
