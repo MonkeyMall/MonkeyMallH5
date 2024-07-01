@@ -38,9 +38,6 @@
 import {
   getComponyList
 } from '@/api/guoguo.js'
-// import { listForApplet } from '@/api/comm'
-// import { getWetchatName } from '@/utils/auth'
-// import config from '@/config'
 
 export default {
   data() {
@@ -64,33 +61,45 @@ export default {
       }
     }
   },
-  onPullDownRefresh() {
-    // this.enablePullDownRefreshFn()
-    // uni.stopPullDownRefresh();//停止刷新
+  onReachBottom() {
+    //上拉加载请求更多数据
+    this.getmoreActives();
   },
   onShow() {
-    this.getList()
-  },
-  onReachBottom() {
-  },
-  onPageScroll(e) {
-  },
-  onShareAppMessage(options) {
-    // 返回分享的内容
-    return {
-      title: getWetchatName(),
-      path: '/pages/index',
-    };
+    this.initData()
   },
   methods: {
+    //上拉加载获取更多的限时活动
+    async getmoreActives() {
+      if (this.loadingStatus === 'nomore') {
+        return false;
+      }
+      this.loadingStatus = 'loading';
+      if (this.list.length < this.total) {
+        this.pageNum++
+        await this.getList()
+      } else {
+        this.loadingStatus = 'nomore';
+      }
+    },
+    initData() {
+      this.list = []
+      this.pageNum = 1
+      this.loadingStatus = 'more'
+      this.getList()
+    },
     async getList() {
       const data = await getComponyList({
         name: this.name || '',
         limte: 10,
-        page: 1
+        page: this.pageNum
       })
       console.log('datalist', data)
-      this.list = data.data
+      this.list = this.list.concat(data.data)
+      this.total = data.count
+      if (this.total <= 10) {
+        this.loadingStatus = 'noMore'
+      }
     },
     clear(e) {
       console.log('zx', e)
@@ -102,8 +111,8 @@ export default {
       }
     },
     // 输入学校名称
-    handxenamse(name) {
-      this.initData(name)
+    handxenamse() {
+      this.initData()
     },
     // 跳转详情
     goInfo(info) {

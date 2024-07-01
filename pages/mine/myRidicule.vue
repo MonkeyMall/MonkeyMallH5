@@ -32,16 +32,33 @@ export default {
       list: []
     }
   },
+  onReachBottom() {
+    //上拉加载请求更多数据
+    this.getmoreActives();
+  },
   onShow() {
-    this.getList()
-  },
-  components: {
-    
-  },
-  onShareAppMessage(options) {
-    
+    this.initData()
   },
   methods: {
+    //上拉加载获取更多的限时活动
+    async getmoreActives() {
+      if (this.loadingStatus === 'nomore') {
+        return false;
+      }
+      this.loadingStatus = 'loading';
+      if (this.list.length < this.total) {
+        this.pageNum++
+        await this.getList()
+      } else {
+        this.loadingStatus = 'nomore';
+      }
+    },
+    initData() {
+      this.list = []
+      this.pageNum = 1
+      this.loadingStatus = 'more'
+      this.getList()
+    },
     toPage(item) {
       console.log(11, item)
       uni.navigateTo({
@@ -50,10 +67,14 @@ export default {
     },
     async getList() {
       const data = await getRidiculeMyList({
-        page: 1
+        limte: 10,
+        page: this.pageNum
       })
-      console.log('datalist', data)
-      this.list = data.data
+      this.list = this.list.concat(data.data)
+      this.total = data.count
+      if (this.total <= 10) {
+        this.loadingStatus = 'noMore'
+      }
     }
   }
 }
