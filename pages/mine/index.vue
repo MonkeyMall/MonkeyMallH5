@@ -31,14 +31,14 @@
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
-        <view class="uset-list-item">
+        <view class="uset-list-item" @click="goPage('')">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe60a;</view>
             <view>侃言收藏</view>
           </view>
           <view class="iconfont right">&#xe840;</view>
         </view>
-        <view class="uset-list-item">
+        <view class="uset-list-item" @click="goPage('')">
           <view class="uset-list-item-label">
             <view class="iconfont">&#xe618;</view>
             <view>我的订单</view>
@@ -90,9 +90,16 @@ export default {
           url: '/pages/login'
         })
       } else {
-        uni.navigateTo({
-          url
-        })
+        if (url) {
+          uni.navigateTo({
+            url
+          })
+        } else {
+          uni.showToast({
+            title: '暂未开放,请耐心等待！',
+            icon: 'none'
+          })
+        }
       }
     }
   }

@@ -122,3 +122,8 @@ export function timestampToTime(timestamp) {
   return Y + M + D;
   // return Y + M + D + h + m + s;
 }
+
+import dictData from '@/utils/dictData.js'
+export function dictHx(value, type) {
+  return dictData[type].filter(item => {return item.value == value})[0].label
+}

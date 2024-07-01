@@ -12,6 +12,7 @@
             <view :class="['iconfont', isCollect ? 'isCollect' : '']" @click="collectFn">&#xe60a;</view>
           </view>
           <view class="compony-list-item-right-address">
+            <view class="iconfont">&#xe606;</view>
             <text>{{ info.address }}</text>
           </view>
         </view>
@@ -21,30 +22,100 @@
       <view class="compony-info">
         <view class="compony-info-lable">基础信息</view>
         <view class="compony-info-des">
-          <view>行业： {{ info.industry }}</view>
+          <view>行业： <text v-for="(item, index) in info.industry.split(',')" :key="index">{{ dictHx(item, 'industryOptions') }}</text></view>
           <view>规模： {{ info.scale }}</view>
-          <view>工资范围： {{ info.wage }}</view>
-          <view>成立时间： 2024年3月11日</view>
+          <view>上班时间： {{ info.workTime }}</view>
+          <view>成立时间： {{ info.createdDate }}</view>
         </view>
       </view>
       <view class="compony-other">
-        <view>融资情况： {{ info.financing }}</view>
-        <view>五险： {{ info.accumulation === '1' ? '有' : '无'}}</view>
-        <view>一金： {{ info.insurance === '1' ? '有' : '无' }}</view>
-        <view>福利： {{ info.welfare }}</view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe638;</view>
+            融资情况： 
+          </view>
+          {{ dictHx(info.financing, 'financingOptions') }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe66e;</view>
+            工资范围： 
+          </view>
+          {{ info.wage }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe60d;</view>
+            五险： 
+          </view>
+          {{ info.accumulation === '1' ? '有' : '无'}}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe60d;</view>
+            一金： 
+          </view>
+          {{ info.insurance === '1' ? '有' : '无' }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe601;</view>
+            福利： 
+          </view>
+          <text v-for="(item, index) in info.welfare.split(',')" :key="index">{{ dictHx(item, 'welfareOptions') }}</text>
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe619;</view>
+            官网： 
+          </view>
+          {{ info.website }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe668;</view>
+            注册资本： 
+          </view>
+          {{ info.registeredCapital }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe617;</view>
+            上班时间： 
+          </view>
+          {{ info.workTime }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe606;</view>
+            注册地址： 
+          </view>
+          {{ info.addressZc }}
+        </view>
+        <view class="li-item">
+          <view class="item-label">
+            <view class="iconfont">&#xe60b;</view>
+            其他： 
+          </view>
+          <text v-for="(item, index) in info.overTime.split(',')" :key="index">{{ dictHx(item, 'overTimeOptions') }}</text>
+        </view>
       </view>
       <view class="label">工作感受</view>
       <view class="pl-list">
         <view class="pl-list-ul">
-          <view class="pl-list-li" v-for="(item, index) in componyCommentList" :key="index">
+          <view v-if="componyCommentList.length" class="pl-list-li" v-for="(item, index) in componyCommentList" :key="index">
             <view>{{ item.userId.username}}</view>
             <view  class="pl-list-li-des">{{ item.componyContents}}</view>
+          </view>
+          <view class="empty-box" v-if="!componyCommentList.length">
+            <view>暂无工作感受，快来加入评论吧！</view>
+            <view class="joinMessageBtn" @click="submitPlFn()">工作感受</view>
           </view>
         </view>
       </view>
     </view>
     <!-- 评论公司按钮 -->
-    <view class="add-btn" @click="addPlFn">
+    <view class="add-btn" @click="addPlFn" v-if="componyCommentList.length">
       <view class="iconfont">&#xe600;</view>
      </view>
      <uv-popup ref="popup">
@@ -73,10 +144,13 @@ import {
   commentsCollect,
   getCompanyCollectIsCollect
 } from '@/api/guoguo.js'
-
+import {
+  dictHx
+} from '@/utils/index.js'
 export default {
   data() {
     return {
+      // industryOptions,
       pageNum: 1,
       pageSize: 10,
       name: '',
@@ -103,6 +177,7 @@ export default {
     }
   },
   methods: {
+    dictHx,
     // 公司详情
     async getList(obj) {
       const data = await getComponyList({
@@ -209,6 +284,10 @@ export default {
         }
       }
       &-address {
+        display: flex;
+        align-items: center;
+        gap: 20rpx;
+        color: #999;
         font-size: 28rpx;
         @include overline(2);
       }
@@ -251,15 +330,47 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    view {
+      display: flex;
+      gap: 10rpx;
+    }
   }
 }
 .compony-other {
   padding: 20rpx;
   border-radius: 10rpx;
   background: #fff;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333;
   margin-top: 20rpx;
+  .li-item {
+    display: flex;
+    gap: 10rpx;
+    margin-bottom: 10rpx;
+    .item-label {
+      display: flex;
+      gap: 8rpx;
+      align-items: center;
+      color: #111;
+    }
+  }
+}
+.empty-box {
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30rpx;
+  color: #999;
+  .joinMessageBtn {
+    width: 300rpx;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 70rpx;
+    background: $uni-color-fz;
+    color: #fff;
+  }
 }
 .label {
   font-size: 30rpx;

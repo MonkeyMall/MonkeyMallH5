@@ -24,8 +24,13 @@
             <text>{{ item.address }}</text>
           </view>
           <view class="compony-list-item-right-tags">
-            <text>2012年成立</text>
-            <text>{{ item.componyId.welfare }}</text>
+            <text v-if="item.componyId.createdDate">{{ item.componyId.createdDate }}成立</text>
+            <template v-if="item.componyId.overTime && item.componyId.overTime.split(',')">
+              <text v-for="(tag, index1) in item.componyId.overTime.split(',')" :key="index1">
+                {{ dictHx(tag, 'overTimeOptions')}}
+              </text>
+            </template>
+            <!-- <text>{{ item.componyId.welfare }}</text> -->
           </view>
         </view>
       </view>
@@ -38,7 +43,9 @@
 import {
   getCompanyCollectList
 } from '@/api/guoguo.js'
-
+import {
+  dictHx
+} from '@/utils/index.js'
 export default {
   data() {
     return {
@@ -72,6 +79,7 @@ export default {
     this.getmoreActives();
   },
   methods: {
+    dictHx,
     //上拉加载获取更多的限时活动
     async getmoreActives() {
       if (this.loadingStatus === 'nomore') {
