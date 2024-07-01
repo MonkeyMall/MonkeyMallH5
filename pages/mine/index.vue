@@ -62,7 +62,7 @@ export default {
   components: {
   },
   onShow() {
-    
+    this.userInfo = uni.getStorageSync('userInfoJson') ? JSON.parse(uni.getStorageSync('userInfoJson')) : ''
   },
   computed: {
     
