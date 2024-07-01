@@ -32,84 +32,94 @@
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe638;</view>
-            融资情况： 
+            融资情况
           </view>
-          {{ dictHx(info.financing, 'financingOptions') }}
+          <view class="item-cons">{{ dictHx(info.financing, 'financingOptions') }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe66e;</view>
-            工资范围： 
+            工资范围
           </view>
-          {{ info.wage }}
+          <view class="item-cons">{{ info.wage }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe60d;</view>
-            五险： 
+            五险
           </view>
-          {{ info.accumulation === '1' ? '有' : '无'}}
+          <view class="item-cons">{{ info.accumulation === '1' ? '有' : '无'}}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe60d;</view>
-            一金： 
+            一金
           </view>
-          {{ info.insurance === '1' ? '有' : '无' }}
+          <view class="item-cons">{{ info.insurance === '1' ? '有' : '无' }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe601;</view>
-            福利： 
+            福利
           </view>
-          <text v-for="(item, index) in info.welfare.split(',')" :key="index">{{ dictHx(item, 'welfareOptions') }}</text>
+          <view class="item-cons">
+            <text class="item-cons-btn" v-for="(item, index) in info.welfare.split(',')" :key="index">{{ dictHx(item, 'welfareOptions') }}</text>
+          </view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe619;</view>
-            官网： 
+            官网
           </view>
-          {{ info.website }}
+          <view class="item-cons">{{ info.website }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe668;</view>
-            注册资本： 
+            注册资本
           </view>
-          {{ info.registeredCapital }}
+          <view class="item-cons">{{ info.registeredCapital }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe617;</view>
-            上班时间： 
+            上班时间
           </view>
-          {{ info.workTime }}
+          <view class="item-cons">{{ info.workTime }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe606;</view>
-            注册地址： 
+            注册地址
           </view>
-          {{ info.addressZc }}
+          <view class="item-cons">{{ info.addressZc }}</view>
         </view>
         <view class="li-item">
           <view class="item-label">
             <view class="iconfont">&#xe60b;</view>
-            其他： 
+            其他
           </view>
-          <text v-for="(item, index) in info.overTime.split(',')" :key="index">{{ dictHx(item, 'overTimeOptions') }}</text>
+          <view class="item-cons">
+            <text class="item-cons-btn" v-for="(item, index) in info.overTime.split(',')" :key="index">{{ dictHx(item, 'overTimeOptions') }}</text>
+          </view>
         </view>
       </view>
       <view class="label">工作感受</view>
       <view class="pl-list">
         <view class="pl-list-ul">
           <view v-if="componyCommentList.length" class="pl-list-li" v-for="(item, index) in componyCommentList" :key="index">
-            <view>{{ item.userId.username}}</view>
+            <view class="pl-list-li-header">
+              <image
+                :src="host + item.userId.header"
+                mode="scaleToFill"
+              />
+              {{ item.userId.username}}
+            </view>
             <view  class="pl-list-li-des">{{ item.componyContents}}</view>
           </view>
           <view class="empty-box" v-if="!componyCommentList.length">
             <view>暂无工作感受，快来加入评论吧！</view>
-            <view class="joinMessageBtn" @click="submitPlFn()">工作感受</view>
+            <view class="joinMessageBtn" @click="addPlFn()">工作感受</view>
           </view>
         </view>
       </view>
@@ -137,6 +147,7 @@
 </template>
 
 <script>
+import config from '@/config/index.js'
 import {
   getComponyList,
   setCommentsComponyAdd,
@@ -150,6 +161,7 @@ import {
 export default {
   data() {
     return {
+      host: config.COS_CDN_PREFIX_http,
       // industryOptions,
       pageNum: 1,
       pageSize: 10,
@@ -348,10 +360,20 @@ export default {
     gap: 10rpx;
     margin-bottom: 10rpx;
     .item-label {
+      width: 180rpx;
       display: flex;
       gap: 8rpx;
       align-items: center;
       color: #111;
+    }
+    .item-cons {
+      display: flex;
+      flex-wrap: wrap;
+      flex: 1;
+      gap: 5rpx;
+      .item-cons-btn {
+        padding: 5rpx;
+      }
     }
   }
 }
@@ -390,6 +412,7 @@ export default {
 }
 .pl-list {
   padding: 20rpx;
+  margin-bottom: 60rpx;
   border-radius: 10rpx;
   background: #fff;
   font-size: 28rpx;
@@ -397,6 +420,17 @@ export default {
   &-li {
     padding: 0 10rpx;
     border-radius: 4rpx;
+    .pl-list-li-header {
+      display: flex;
+      align-items: center;
+      gap: 20rpx;
+      image {
+        width: 70rpx;
+        height: 70rpx;
+        border-radius: 20rpx;
+        overflow: hidden;
+      }
+    }
     &:not(:last-child) {
       padding-bottom: 30rpx;
       border-bottom: 1px solid #f3fbfb;
