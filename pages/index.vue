@@ -13,7 +13,7 @@
     <view class="compony-list">
       <view class="compony-list-item" v-for="(item, index) in list" :key="index" @click="goInfo(item)">
         <image
-          :src="item.logo"
+          :src="item.logo || defaultCompanyHeader"
           mode="scaleToFill"
         />
         <view class="compony-list-item-right">
@@ -45,9 +45,11 @@ import {
 import {
   dictHx
 } from '@/utils/index.js'
+import config from '@/config/index.js'
 export default {
   data() {
     return {
+      defaultCompanyHeader: config.COS_CDN_PREFIX_http + 'public/images/monkeymall/yuan.png',
       name: '',
       closeIcon: '',
       pageNum: 1,
@@ -136,11 +138,18 @@ export default {
   padding: 0 !important;
 }
 .header {
-  padding: 30rpx;
+  position: fixed;
+  top: -2px;
+  left: 0;
+  right: 0;
+  padding: 30rpx 0;
+  margin: 0 30rpx;
+  background: #f6f8fd;
 }
 .compony-list {
   padding: 0 30rpx 30rpx 30rpx;
   border-radius: 10rpx;
+  margin-top: 120rpx;
   &-item {
     display: flex;
     align-items: center;

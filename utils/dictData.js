@@ -14,6 +14,10 @@ const overTimeOptions = [
   {
     label: '偶尔加班',
     value: '3'
+  },
+  {
+    label: '不加班',
+    value: '4'
   }
 ]
 const scaleList = [{
@@ -105,6 +109,9 @@ const welfareOptions = [{
 }, {
   label: '全勤奖',
   value: '14'
+},{
+  label: '学历津贴',
+  value: '15'
 }]
 const industryOptions = [{
   label: '暂无',
@@ -124,6 +131,9 @@ const industryOptions = [{
 }, {
   label: '电子商务',
   value: '5'
+}, {
+  label: '环保',
+  value: '6'
 }]
 export default {
   overTimeOptions,

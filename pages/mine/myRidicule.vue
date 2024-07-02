@@ -1,6 +1,6 @@
 <template>
     <view class="ridicule">
-      <view class="ridicule-item" @click="toPage(item)" v-for="(item, index) in list" :key="index">
+      <view v-if="list.length > 0" class="ridicule-item" @click="toPage(item)" v-for="(item, index) in list" :key="index">
         <!-- <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt=""> -->
         <view class="ridicule-item-cons">
           <view class="ridicule-item-cons-title">{{ item.title }}</view>
@@ -11,8 +11,13 @@
           <view class="ridicule-item-tags-item shgw" v-else-if="item.category === '生活感悟'">生活感悟</view>
           <view class="ridicule-item-tags-item gztk" v-else>工作调侃</view>
         </view>
+        <uni-load-more :status="loadingStatus"></uni-load-more>
       </view>
-      <uni-load-more :status="loadingStatus"></uni-load-more>
+      <view v-if="!list.length" class="ridicule-empty">
+        <view>您还没有发表过任何侃言</view>
+        <view>快去和大家交流吧！</view>
+        <view class="joinMessageBtn" @click="toSubmit">发 布</view>
+      </view>
     </view>
 </template>
 
@@ -59,8 +64,12 @@ export default {
       this.loadingStatus = 'more'
       this.getList()
     },
+    toSubmit() {
+      uni.navigateTo({
+        url: `/pages/ridicule/add`
+      })
+    },
     toPage(item) {
-      console.log(11, item)
       uni.navigateTo({
         url: `/pages/ridicule/info?id=${item._id}`
       })
@@ -125,6 +134,26 @@ export default {
         }
       }
     }
+  }
+}
+.ridicule-empty {
+  height: 700rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  flex-direction: column;
+  justify-content: center;
+  color: $uni-text-color;
+  font-size: 28rpx;
+  .joinMessageBtn {
+    width: 300rpx;
+    line-height: 70rpx;
+    text-align: center;
+    border-radius: 70rpx;
+    background: $uni-color-fz;
+    color: #fff;
+    margin-top: 60rpx;
   }
 }
 </style>
