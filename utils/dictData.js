@@ -1,5 +1,9 @@
 const overTimeOptions = [
   {
+    label: '暂无',
+    value: '0'
+  },
+  {
     label: '双休',
     value: '1'
   },
@@ -98,8 +102,14 @@ const welfareOptions = [{
 }, {
   label: '定期体检',
   value: '13'
+}, {
+  label: '全勤奖',
+  value: '14'
 }]
 const industryOptions = [{
+  label: '暂无',
+  value: '0'
+}, {
   label: '互联网',
   value: '1'
 }, {
